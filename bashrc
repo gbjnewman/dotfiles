@@ -1,3 +1,4 @@
+# -----------------------------------------------------------------------------
 ## ---------- If not running interactively, don't do anything
 ### --- $- will return the current option flags for the current shell. ($ and - are special parameters, $ expands to the process ID of the sell, and - expands to the current option flags set.
 ### --- so this script is looking for the interactive(i) flag in the output of $-
@@ -8,25 +9,27 @@ esac
 
 
 
+# -----------------------------------------------------------------------------
 ## ---------- Envirnoment  Variables
 
 
 
 ### --- export the TERM variable so that subprocesses can see it
 export TERM=xterm-256color
-### --- export the EDITOR variable so that subprocesses can see it
+### --- exporting the EDITOR variable so that subprocesses can see it
 export EDITOR=vi
-### --- export the VISUAL variable so that subprocesses can see it
+### --- exporting the VISUAL variable so that subprocesses can see it
 export VISUAL=vi
 
 
 
+# -----------------------------------------------------------------------------
 ## ---------- Pager (less mainly)
 
 
 
 ### Lesspipe is an input preprocessor for less.  It allows less to show .pdf's, archives, and other file types in a meaningful way.
-### ---  If /usr/bin/lesspipe exists and is executable(test -x) then
+### ---  If /usr/bin/lesspipe exists and is executable(-x) then
 ### ---  Sets and exports LESSOPEN so less uses lesspipe automatically.
 ### ---
 if test -x /usr/bin/lesspipe; then
@@ -46,12 +49,42 @@ export LESS_TERMCAP_us="^[[4m" # underline
 
 
 
+# -----------------------------------------------------------------------------
 ## ---------- Dir Colours
 
 
-# Coming soon
+### --- dircolors sets LS_COLORS and exports them
+if command -v dircolors 1>/dev/null 2>/dev/null; then
+        if test -r ~/.dircolor; then
+                eval $(dircolors -b ~/.dircolors)
+        else
+                eval $(dircolors -b)
+        fi
+        alias ls="ls -h --color=auto"
+fi
+eval $(dircolors -b ~/.dircolors)
 
 
+# -----------------------------------------------------------------------------
+## ---------- Aliases
+
+
+# Set up the ll alias
+alias ll='ls -alF'
+# Sets up clear screen alias, uses ansi escape to clear
+alias c='printf "\e[H\e[2J"'
+
+
+
+# -----------------------------------------------------------------------------
+## ---------- Prompt
+
+__ps1() {
+  export PS1='\[\e[32m\]\u@\w\$\[\e[0m\] '
+}
+PROMPT_COMMAND='__ps1'
+
+# -----------------------------------------------------------------------------
 ## ---------- History
 
 
@@ -61,8 +94,24 @@ export HISTSIZE=5000
 export HISTFILESIZE=10000
 
 
-### --- Sets vi mode for bash history navigation (remember that it will be in "insert" mode to start with, will need to "esc" to get into "normal" mode)
+### --- Sets vi mode for bash history navigation
 set -o vi
 
 ### Enables (sets) histappend. Without histappend, the history won't be saved betweeen sessions, it will be clobbered on every exit.
 shopt -s histappend
+
+
+
+# -----------------------------------------------------------------------------
+## ---------- Functions
+
+
+
+cdtemp() {
+  name="$1";
+  mkdir -p "/tmp/$name";
+  cd "/tmp/$name"
+} && export -f cdtemp
+
+
+
