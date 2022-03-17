@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Sets up the dotfiles by symbolically linking them to $HOME
+
+set -e
+
+ln -sf "$PWD/.bashrc1" "$HOME/.bashrc"
+ln -sf "$PWD/.tmux.conf1" "$HOME/.tmux.conf"

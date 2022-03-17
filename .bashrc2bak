@@ -20,7 +20,7 @@ export TERM=xterm-256color
 export EDITOR=vi
 ### --- exporting the VISUAL variable so that subprocesses can see it
 export VISUAL=vi
-
+export editor=vi
 
 
 # -----------------------------------------------------------------------------
@@ -69,11 +69,12 @@ eval $(dircolors -b ~/.dircolors)
 ## ---------- Aliases
 
 
-# Set up the ll alias
+### Set up the ll alias
 alias ll='ls -alF'
-# Sets up clear screen alias, uses ansi escape to clear
+### Sets up clear screen alias, uses ansi escape to clear
 alias c='printf "\e[H\e[2J"'
-
+### Sets vi to vim, if vim is on the system
+_have vim && alias vi=vim
 
 
 # -----------------------------------------------------------------------------
