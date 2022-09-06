@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# links files from dotfiles to home directory
+
+set -e
+
+ln -sf "$PWD/.bashrc_for_gitbash" "$HOME/.bashrc"

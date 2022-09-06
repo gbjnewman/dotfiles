@@ -1,5 +1,0 @@
-
-# set up tmux to use terminals colours
-
-set -g default-terminal "screen-256color"
-
