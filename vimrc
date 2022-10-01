@@ -1,5 +1,4 @@
-" Designed for vim 8+. 
-" This vimrc is based on rwxrob's vimrc,
+" Designed for vim 8+.  " This vimrc is based on rwxrob's vimrc,
 " https://github.com/rwxrob/dot/blob/main/vim/.vimrc
 " See https://youtu.be/3mRBUUTL2Uo for rwxrob's breakdown of his vimrc
 
@@ -18,6 +17,9 @@ set nocompatible
 
 " automatically indent new lines
 set autoindent
+
+" indenting for wrapped lines
+set breakindent
 
 " automatically write files when changing when multiple files are open
 set autowrite
@@ -93,8 +95,8 @@ endif
 " Sets tabs to equivelent amount of spaces
 set expandtab
 
-" disables relative line numbers
-set norelativenumber
+"set or disables relative line numbers
+set relativenumber
 
 " makes an underline where ever the cursor is
 " set cursorline
@@ -123,7 +125,7 @@ set icon
  set scrolloff=8
 
 " highlight search hits
-set hlsearch
+set nohlsearch
 set incsearch
 set linebreak
 
@@ -164,6 +166,13 @@ filetype plugin on
 
 " rwxrob has a bunch of colors and stuff about here in his vimrc if i want to
 " check it out check video around 1.54.00 
+
+" My colors that i tried to figure out from around the net
+" refernce:-  https://vi.stackexchange.com/questions/9754/how-to-change-vim-background-color-in-hex-code-or-rgb-color-code
+set termguicolors   "this turns on 24 bit colors
+set background=dark
+colorscheme elflord 
+
 
 " remappings, one to edit vimrc and one to reload the vimrc without having to
 " restart the current session. nnoremap is for normal mode remapping, see :h
