@@ -171,7 +171,9 @@ filetype plugin on
 " refernce:-  https://vi.stackexchange.com/questions/9754/how-to-change-vim-background-color-in-hex-code-or-rgb-color-code
 set termguicolors   "this turns on 24 bit colors
 set background=dark
-" colorscheme elflord 
+" theme
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox 
 
 
 " remappings, one to edit vimrc and one to reload the vimrc without having to
