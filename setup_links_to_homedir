@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# links files from dotfiles to home directory
-
-set -e
-
-ln -sf "$PWD/bashrcbak" "$HOME/.bashrc"
-ln -sf "$PWD/vimrc" "$HOME/.vim/vimrc"
