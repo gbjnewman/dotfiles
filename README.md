@@ -1,12 +1,9 @@
 # dotfiles
-```bash
 ██████   ██████  ████████ ███████ ██ ██      ███████ ███████ 
 ██   ██ ██    ██    ██    ██      ██ ██      ██      ██      
 ██   ██ ██    ██    ██    █████   ██ ██      █████   ███████ 
 ██   ██ ██    ██    ██    ██      ██ ██      ██           ██ 
 ██████   ██████     ██    ██      ██ ███████ ███████ ███████ 
-```                                                             
-
 
 
 Dotfiles for configuring terminal environment settings, and also  terminal program settings.  
