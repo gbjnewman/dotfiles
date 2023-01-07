@@ -12,7 +12,7 @@ endif
 set nocompatible
 
 
-" ################# Vi compatible (~/.exrc) ####################
+" ################# stuff that's also compatible with vi (~/.exrc) ####################
 
 
 " automatically indent new lines
@@ -33,6 +33,7 @@ set ruler " see :h rulerformat for more
 " sets it to show insert, replace or visual mode at the bottom when you're in them
 set showmode
 
+" need to add explanation to what this is
 set tabstop=2
 
 " ##############################################################
@@ -53,7 +54,7 @@ set shiftwidth=2
 " does the smart indenting, see :h smartindent
 set smartindent
 
-" sets smarttab, when smarttab is on it inserts blanks(whatever expand tab is
+" sets smarttab, when smarttab is on it inserts blanks(whish wiil be equal to whatever expand tab is
 " set to) according to shiftwidth. See :h smarttab for more info
 set smarttab
 
@@ -84,7 +85,7 @@ endif
 " set textwidth=80
 
 " Sets a colored column in the vim terminal(for example you can set it to see where
-" your textwidth ends, like here) the +4 setting uses the textwidth then
+" your textwidth ends) the +4 setting uses the textwidth then
 " +4 to indicate where the column should go(it's +4 here and not +1 because line
 " numbers are turned on, and they take up 3 columns)
 " set colorcolumn=+4
@@ -96,12 +97,12 @@ endif
 set expandtab
 
 "set or disables relative line numbers
-set relativenumber
+set norelativenumber
 
 " makes an underline where ever the cursor is
 " set cursorline
 
-" make ~ (it represents blank lines) effectively invisible
+" make ~ (it represents blank lines, as in nothing in the file) effectively invisible
 " highlight NonText guifg=bg
 
 " turn on defaust spell checking
@@ -120,8 +121,9 @@ set nowritebackup
 " do with tmux window titles or something. Leaving it in
 set icon
 
-" cursor is always centred on the screen, can be changed to have an amount of
-" give
+" sets how much room the cursor has to move within the screen, you can set it
+" so it always is in the middle of the screen and the text is moving around,
+" or it can be set to be able to move all the way up and down the screen
  set scrolloff=8
 
 " highlight search hits
@@ -141,39 +143,44 @@ set viminfo='20,<1000,s1000
 set history=100
 
 " disable bracket matching
-" if eval is the vimtiny check
+" the if conditional for the eval is the vimtiny check(ie. are we using this
+" vimrc with vimtiny
 if has("eval")
   let g:loaded_matchparen=1
 endif
 set noshowmatch
 
-" search wrap around file
+" search wrap around file(ie. if you start your search half way down the file,
+" it will go to the top and continue searching
 set wrapscan
 
-" rwxrob says plugins need this
-if has("syntax")
-  syntax enable
-endif
-
-" faster scrolling
-set ttyfast
+" rwxrob says plugins need this, also Max Cantor from "how to do 90% of what
+" plugins do with just vim" has something similar in his presentation
+" if has("syntax")
+"   syntax enable
+" endif
+" I don't know why rob has the conditional, it seems others are just enabling
+" in. leaving the above in, in case something happens in the future and i did
+" need the conditional
+syntax enable
 
 " allow sensing the filetype
 filetype plugin on
 
+" faster scrolling
+set ttyfast
+
 " high contrast background
 " set background=dark
 
-" rwxrob has a bunch of colors and stuff about here in his vimrc if i want to
-" check it out check video around 1.54.00 
+" rwxrob has a bunch of colors and stuff about here in his vimrc
+" check video around 1.54.00 
 
 " My colors that i tried to figure out from around the net
 " refernce:-  https://vi.stackexchange.com/questions/9754/how-to-change-vim-background-color-in-hex-code-or-rgb-color-code
 set termguicolors   "this turns on 24 bit colors
 set background=dark
-" theme
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox 
+" colorscheme 
 
 
 " remappings, one to edit vimrc and one to reload the vimrc without having to
@@ -186,7 +193,7 @@ colorscheme gruvbox
 " set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 " Rob recommeds to use the Plug pluggin manager, as it doesn't mess around with
-" you stuff, and it help to keep everything clean and separated. see his video
+" you stuff, and it helps to keep everything clean and separated. see his video
 " for more
 " this conditional makes it so the plugins only load if Plug is present
 if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -197,7 +204,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
 endif
 
-" maps Y to act the same way as D and C (in that it goes to the end of line)
+" maps Y to act the same way as D and C (in that it does the action to the end of line)
 map Y y$
 
 " mapping for function keys, the ! at the end before <CR> is to make it so you
