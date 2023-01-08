@@ -1,6 +1,24 @@
+" ##############################################################
+
+" See :h vimrc for information on vimrc files
+
+" ##############################################################
+" ##############################################################
+
 " Designed for vim 8+.  " This vimrc is based on rwxrob's vimrc,
 " https://github.com/rwxrob/dot/blob/main/vim/.vimrc
 " See https://youtu.be/3mRBUUTL2Uo for rwxrob's breakdown of his vimrc
+ 
+" and also from Max Cantors presentation "how to do 90% of what plugins do
+" with just vim"
+" See  https://www.youtube.com/watch?v=XA2WjJbmmoM for Max's presentation
+
+" ##############################################################
+" ##############################################################
+
+" Taken from rwxrobs video/s
+
+" ##############################################################
 
 " vim-tiny lacks 'eval', according to rwxrob this makes the vimrc work in
 " tinyvim. see his video for more info
@@ -10,10 +28,6 @@ endif
 
 " Sets vi compatible mode to off(use nvi for original vi editing)
 set nocompatible
-
-
-" ################# stuff that's also compatible with vi (~/.exrc) ####################
-
 
 " automatically indent new lines
 set autoindent
@@ -36,13 +50,12 @@ set showmode
 " need to add explanation to what this is
 set tabstop=2
 
-" ##############################################################
-
-
 " disable visual bell
 set t_vb=
 
 " Not sure what this does, not sure it's needed
+" it set mapleader? to something other than default, can be useful to prevent
+" clashes with global and local plugins
 let mapleader=","
 
 set softtabstop=2
@@ -66,14 +79,14 @@ if v:version >= 800
 	set nofixendofline
 
 	" ascii friendly charactors for when you want to see invisible charactors
-	" with :set list
 	set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
+	" set list
 
 	" turns of automatic folding
 	set foldmethod=manual
 
-	" makes all folds open
-	set nofoldenable
+	" if some folds where folded this will open them
+  set nofoldenable
 
 endif
 
@@ -81,8 +94,8 @@ endif
 " it, so it will be commented out for now
 " match IncSearch '\s\+$'
 
-" Sets how wide the insert text can be (ie when it wraps line)
-" set textwidth=80
+" Sets how wide inserted text can be (ie when lines will be wrapped)
+set textwidth=80
 
 " Sets a colored column in the vim terminal(for example you can set it to see where
 " your textwidth ends) the +4 setting uses the textwidth then
@@ -119,15 +132,22 @@ set nowritebackup
 
 " no sure what this does, neither does rwxrob. He thought it had something to
 " do with tmux window titles or something. Leaving it in
+" I believe this just sets the icon text for the window, only works on x11
+" gui's. the icon text uses the file name unless you set iconstring to something
+" non empty
 set icon
+
 
 " sets how much room the cursor has to move within the screen, you can set it
 " so it always is in the middle of the screen and the text is moving around,
 " or it can be set to be able to move all the way up and down the screen
  set scrolloff=8
 
-" highlight search hits
+" set highlight search hits, can be annoying when they stay highlight after the
+" search
 set nohlsearch
+
+" displays the match when your only partially through typing it
 set incsearch
 set linebreak
 
@@ -142,7 +162,7 @@ set viminfo='20,<1000,s1000
 " command history
 set history=100
 
-" disable bracket matching
+" sets bracket matching
 " the if conditional for the eval is the vimtiny check(ie. are we using this
 " vimrc with vimtiny
 if has("eval")
@@ -164,7 +184,9 @@ set wrapscan
 " need the conditional
 syntax enable
 
-" allow sensing the filetype
+" allow sensing the filetype, when you start editing a file vim will try to
+" figure out what kind of file it is. see :h write-filetype-plugin to see how to
+" write my own filetype plugins, also see :h write-plugin
 filetype plugin on
 
 " faster scrolling
@@ -180,7 +202,8 @@ set ttyfast
 " refernce:-  https://vi.stackexchange.com/questions/9754/how-to-change-vim-background-color-in-hex-code-or-rgb-color-code
 set termguicolors   "this turns on 24 bit colors
 set background=dark
-" colorscheme 
+colorscheme elflord
+
 
 
 " remappings, one to edit vimrc and one to reload the vimrc without having to
@@ -229,3 +252,28 @@ map <F7> :set spell!<CR>
 " set rtp^=~/.vimpersonal  "this is from rwxrobs vimrc
 " set rtp^=~/.vimprivate  "this is from rwxrobs vimrc
 " set rtp^=~/.vimwork  "this is from rwxrobs vimrc
+
+
+
+" ##############################################################
+" ##############################################################
+
+" Stuff from Max Cantor's presentation 
+
+" ##############################################################
+
+" Sets up a way to do fuzzy finding
+" **(as in star star) tells vim that when you look for a file search through every
+" subdirectory, and search through every subdirectory of every subdirectory
+set path+=**
+
+" Display all matching files when we tab complete, apparently this can be
+" configured several different ways
+set wildmenu
+
+" :h ins-completion for the auto complete man page
+
+" shows the commands your using in the bottom tray thing
+set showcmd
+
+
