@@ -2,6 +2,9 @@
 
 " See :h vimrc for information on vimrc files
 
+" Tip for navigating the help file. ctrl-] will take you to the link under the
+" cursor, and ctrl-o will take you back.
+
 " ##############################################################
 " ##############################################################
 
@@ -20,8 +23,7 @@
 
 " ##############################################################
 
-" vim-tiny lacks 'eval', according to rwxrob this makes the vimrc work in
-" tinyvim. see his video for more info
+" vim-tiny lacks 'eval',so this will check to see if tinyvim is being used, then this makes the vimrc work in tinyvim. see rwxrob video for more info
 if has("eval")
 	let skip_defaults_vim = 1
 endif
@@ -174,8 +176,7 @@ set noshowmatch
 " it will go to the top and continue searching
 set wrapscan
 
-" rwxrob says plugins need this, also Max Cantor from "how to do 90% of what
-" plugins do with just vim" has something similar in his presentation
+" rwxrob says plugins need this, also Max Cantor as well
 " if has("syntax")
 "   syntax enable
 " endif
@@ -194,16 +195,15 @@ set ttyfast
 
 " high contrast background
 " set background=dark
+"
+"this turns on 24 bit colors
+set termguicolors   
 
-" rwxrob has a bunch of colors and stuff about here in his vimrc
-" check video around 1.54.00 
-
-" My colors that i tried to figure out from around the net
-" refernce:-  https://vi.stackexchange.com/questions/9754/how-to-change-vim-background-color-in-hex-code-or-rgb-color-code
-set termguicolors   "this turns on 24 bit colors
+" sets background to dark mode
 set background=dark
-colorscheme elflord
 
+" sets the colorscheme/theme
+colorscheme elflord
 
 
 " remappings, one to edit vimrc and one to reload the vimrc without having to
@@ -218,13 +218,27 @@ colorscheme elflord
 " Rob recommeds to use the Plug pluggin manager, as it doesn't mess around with
 " you stuff, and it helps to keep everything clean and separated. see his video
 " for more
-" this conditional makes it so the plugins only load if Plug is present
-if filereadable(expand("~/.vim/autoload/plug.vim"))
 
-  " github.com/junegunn/vim-plug
+" This is the autoload code taken from the plug git repo(to automatically
+" download and install plug if it not present on the machine)
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  " the --sync flag blocks execution until the installer is finished
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" this conditional makes it so the plugins only load if Plug is present
+" can find plug at github.com/junegunn/vim-plug
+if filereadable(expand("~/.vim/autoload/plug.vim"))
   
-  " this path can be changed to where i want to put the plugins
-  call plug#begin('~/.local/share/vim/plugins')
+  " path can be changed to where i put the plugins
+  call plug#begin('~/autoload/plugplugins')
+  
+  " the plugins go here, list them with the plug command
+
+
+  call plug#end()
 endif
 
 " maps Y to act the same way as D and C (in that it does the action to the end of line)
@@ -277,3 +291,9 @@ set wildmenu
 set showcmd
 
 
+" ##############################################################
+" ##############################################################
+
+" set wildmode
+
+" source ~/someFileSource
