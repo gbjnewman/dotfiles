@@ -11,11 +11,7 @@ For more information and tuturials see [dotfiles.github.io](https://dotfiles.git
 
 ## Installation
 
-### The `curl` method
-
--
-
-### The `manual` method
+### `Manual` method
 
 Manually clone the repo onto you machine
 
