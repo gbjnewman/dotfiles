@@ -215,31 +215,40 @@ colorscheme elflord
 " this is rwxrobs custom ruler
 " set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
+
+
+""""""""""""""""""""PLUGIN""""""""""""""""""""""""""""""""""""
+
+
 " Rob recommeds to use the Plug pluggin manager, as it doesn't mess around with
 " you stuff, and it helps to keep everything clean and separated. see his video
 " for more
 
 " This is the autoload code taken from the plug git repo(to automatically
 " download and install plug if it not present on the machine)
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  " the --sync flag blocks execution until the installer is finished
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+"if empty(glob(data_dir . '/autoload/plug.vim'))
+"  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"  " the --sync flag blocks execution until the installer is finished
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
+"
+"" this conditional makes it so the plugins only load if Plug is present
+"" can find plug at github.com/junegunn/vim-plug
+"if filereadable(expand("~/.vim/autoload/plug.vim"))
+"  
+"  " path can be changed to where i put the plugins
+"  call plug#begin('~/autoload/plugplugins')
+"  
+"  " the plugins go here, list them with the plug command
+"
+"
+"  call plug#end()
+"endif
 
-" this conditional makes it so the plugins only load if Plug is present
-" can find plug at github.com/junegunn/vim-plug
-if filereadable(expand("~/.vim/autoload/plug.vim"))
-  
-  " path can be changed to where i put the plugins
-  call plug#begin('~/autoload/plugplugins')
-  
-  " the plugins go here, list them with the plug command
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  call plug#end()
-endif
 
 " maps Y to act the same way as D and C (in that it does the action to the end of line)
 map Y y$
