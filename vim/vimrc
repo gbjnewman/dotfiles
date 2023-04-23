@@ -306,3 +306,4 @@ set showcmd
 " set wildmode
 
 " source ~/someFileSource
+nnoremap ,html :-1read $PWD/snippets/html<CR>
