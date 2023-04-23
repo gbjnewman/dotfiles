@@ -303,7 +303,6 @@ set showcmd
 " ##############################################################
 " ##############################################################
 
-" set wildmode
+" SNIPPETS
 
-" source ~/someFileSource
 nnoremap ,html :-1read $PWD/snippets/html<CR>
