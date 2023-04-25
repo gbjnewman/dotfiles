@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux/css'
+let g:netrw_dirhist_3='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux'
+let g:netrw_dirhist_2='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux/css'
+let g:netrw_dirhist_1='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux'
+let g:netrw_dirhist_0='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux/css'
+let g:netrw_dirhist_9='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux'
+let g:netrw_dirhist_8='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux/js'
+let g:netrw_dirhist_7='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux'
+let g:netrw_dirhist_6='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux/js'
+let g:netrw_dirhist_5='/home/gtunt/repos/github/learnWithLeon/homeWork/javascriptClass12-14/deleteAndRedo/backgroundPickerRedux'
