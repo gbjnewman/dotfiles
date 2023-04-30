@@ -146,6 +146,9 @@ set textwidth=80
 " Sets tabs to equivelent amount of spaces
 set expandtab
 
+" set time out length in milliseconds
+set timeout timeoutlen=2000
+
 " makes an underline on what line the cursor is on
 " set cursorline
 
@@ -186,15 +189,6 @@ set incsearch
 " cursor quickly jumps to a matching bracket
 " set showmatch
 
-" rwxrob says plugins need this, also Max Cantor as well
-" if has("syntax")
-"   syntax enable
-" endif
-" I don't know why rob has the conditional, it seems others are just enabling
-" in. leaving the above in, in case something happens in the future and i did
-" need the conditional
-syntax enable
-
 " faster scrolling
 set ttyfast
 
@@ -216,6 +210,15 @@ set wildmenu
 
 " You can enable loading the plugin files for specific file types with: >
 filetype plugin on
+
+" rwxrob says plugins need this, also Max Cantor as well
+" if has("syntax")
+"   syntax enable
+" endif
+" I don't know why rob has the conditional, it seems others are just enabling
+" in. leaving the above in, in case something happens in the future and i did
+" need the conditional
+syntax enable
 
 " Rob recommeds to use the Plug plugin manager, as it doesn't mess around with
 " your stuff, and it helps to keep everything clean and separated. see his video
@@ -244,12 +247,23 @@ call plug#end()
 " ##############################################################################
 " ##############################################################################
 " key maps
+"
+" see
+" https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
+" for an explanation on differences between map, noremap etc. Basically map is
+" recursive and noremap is non recursive
 
 " set mapleader
 let mapleader=","
 
-" maps Y to act the same way as D and C (in that it does the action to the end of line)
-map Y y$
+" map Y to act the same way as D and C (in that it does the action to the end of line)
+nnoremap Y y$
+
+" map H to move to the beginning of the line
+nnoremap H ^
+
+" map L to move to the end of the line
+nnoremap L $
 
 " mapping for function keys, the ! at the end before <CR> is to make it so you
 " can turn the thing on and off
