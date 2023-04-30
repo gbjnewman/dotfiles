@@ -1,35 +1,91 @@
-" ##############################################################
+" ##############################################################################
+" ##############################################################################
+" Designed for vim 8+.  
 
-" See :h vimrc for information on vimrc files
+" This vimrc is based off of rwxrob's vimrc with influence from Max Cantor's
+" presentation.
 
-" Tip for navigating the help file. ctrl-] will take you to the link under the
-" cursor, and ctrl-o will take you back.
-
-" ##############################################################
-" ##############################################################
-
-" Designed for vim 8+.  " This vimrc is based on rwxrob's vimrc,
+" rwxrob references
 " https://github.com/rwxrob/dot/blob/main/vim/.vimrc
 " See https://youtu.be/3mRBUUTL2Uo for rwxrob's breakdown of his vimrc
  
-" and also from Max Cantors presentation "how to do 90% of what plugins do
-" with just vim"
-" See  https://www.youtube.com/watch?v=XA2WjJbmmoM for Max's presentation
+" Max Cantor reference
+" how to do 90% of what plugins do with just vim
+" https://www.youtube.com/watch?v=XA2WjJbmmoM
 
-" ##############################################################
-" ##############################################################
+" ##############################################################################
+" ##############################################################################
+" See `:help vimrc` for information on vimrc files
 
-" Taken from rwxrobs video/s
+" Tip for navigating the help file. `ctrl-]` will take you to the link under the
+" cursor, and `ctrl-o` will take you back.
 
-" ##############################################################
+" ##############################################################################
+" ##############################################################################
+" setups up other vim configs that can be used, see rwxrob video(around
+" 3.20.00ish)
 
-" vim-tiny lacks 'eval',so this will check to see if tinyvim is being used, then this makes the vimrc work in tinyvim. see rwxrob video for more info
-if has("eval")
-	let skip_defaults_vim = 1
-endif
+" set rtp^=~/.vimpersonal
+" set rtp^=~/.vimprivate
+" set rtp^=~/.vimwork
 
-" Sets vi compatible mode to off(use nvi for original vi editing)
+" ##############################################################################
+" ##############################################################################
+" colorscheme
+
+colorscheme elflord
+
+" Sets the color of the colorcolumn
+" :hi ColorColumn ctermbg=lightGreen guibg=lightgrey
+
+" make ~ (it represents blank lines, as in nothing in the file) effectively invisible
+" highlight NonText guifg=bg
+
+"this turns on 24 bit colors
+set termguicolors   
+
+" sets background to dark mode
+set background=dark
+
+" rwxrob custom ruler
+
+" set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
+
+" ##############################################################################
+" ##############################################################################
+" settings
+
+" command history
+set history=100
+
+" prevents truncated yanks, deletes, etc. (super important if using the vim
+" buffers to paste stuff to a different file)
+set viminfo='20,<1000,s1000
+
+" makes it to avoid most of the 'Hit Enter ...' type messages
+set shortmess=aoOtTI
+
+" stops vim from silently messing with files that it shouldn't. ie messes
+" with line endings(see rwxrobs video for more info)
+set nofixendofline
+
+" search wrap around file(ie. if you start your search half way down the file,
+" it will go to the top and continue searching
+set wrapscan
+
+" ascii friendly charactors for when you want to see invisible charactors
+set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
+" set list
+
+" turns off automatic folding
+set foldmethod=manual
+
+" if some folds where folded this will open them
+ set nofoldenable
+
+" Sets vi compatible mode to off (just use nvi for vi mode)
 set nocompatible
+
 
 " automatically indent new lines
 set autoindent
@@ -40,13 +96,19 @@ set breakindent
 " automatically write files when changing when multiple files are open
 set autowrite
 
+" shows the commands your using in the bottom tray thing
+set showcmd
+
 " Activates line numbers
 set number
 
-" turn col and row position on in the bottom right
-set ruler " see :h rulerformat for more
+"set or disables relative line numbers
+set norelativenumber
 
-" sets it to show insert, replace or visual mode at the bottom when you're in them
+" turn col and row position on in the bottom right
+set ruler "
+
+" Show insert, replace or visual mode at the bottom when you're in that mode
 set showmode
 
 " need to add explanation to what this is
@@ -55,11 +117,7 @@ set tabstop=2
 " disable visual bell
 set t_vb=
 
-" Not sure what this does, not sure it's needed
-" it set mapleader? to something other than default, can be useful to prevent
-" clashes with global and local plugins
-let mapleader=","
-
+" softtabstop, 
 set softtabstop=2
 
 " sets shiftwidth width (when you are in normal mode press >> or << and it will
@@ -69,31 +127,11 @@ set shiftwidth=2
 " does the smart indenting, see :h smartindent
 set smartindent
 
-" sets smarttab, when smarttab is on it inserts blanks(whish wiil be equal to whatever expand tab is
-" set to) according to shiftwidth. See :h smarttab for more info
+" sets smarttab, when smarttab is on it inserts blanks(which will be equal to whatever expand tab is
+" set to) according to shiftwidth.
 set smarttab
 
-" conditional to check if vim is version 8 or higher. see :h v:version
-if v:version >= 800
-
-	" stops vim from silently messing with files that it shouldn't. ie messes
-	" with line endings(see rwxrobs video for more info)
-	set nofixendofline
-
-	" ascii friendly charactors for when you want to see invisible charactors
-	set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
-	" set list
-
-	" turns of automatic folding
-	set foldmethod=manual
-
-	" if some folds where folded this will open them
-  set nofoldenable
-
-endif
-
-" mark trailing spaces as errors(this is from rwxrobs, i dont know if i want
-" it, so it will be commented out for now
+" mark trailing spaces as errors
 " match IncSearch '\s\+$'
 
 " Sets how wide inserted text can be (ie when lines will be wrapped)
@@ -105,29 +143,20 @@ set textwidth=80
 " numbers are turned on, and they take up 3 columns)
 " set colorcolumn=+4
 
-" Sets the color of the colorcolumn
-" :hi ColorColumn ctermbg=lightGreen guibg=lightgrey
-
 " Sets tabs to equivelent amount of spaces
 set expandtab
 
-"set or disables relative line numbers
-set norelativenumber
-
-" makes an underline where ever the cursor is
+" makes an underline on what line the cursor is on
 " set cursorline
 
-" make ~ (it represents blank lines, as in nothing in the file) effectively invisible
-" highlight NonText guifg=bg
-
-" turn on defaust spell checking
+" turn on default spell checking
 " set spell
 
 " disable spellcapcheck(it checks for a capital as the next word to find the
 " end of a sentence) see :h spellcapcheck
 set spellcapcheck=
 
-" riskier, but keeps your files and folders cleaner
+" risky, but keeps your files and folders cleaner
 set nobackup
 set noswapfile
 set nowritebackup
@@ -139,42 +168,23 @@ set nowritebackup
 " non empty
 set icon
 
+" sets how much room the cursor has to move  up and down the screen
+set scrolloff=8
 
-" sets how much room the cursor has to move within the screen, you can set it
-" so it always is in the middle of the screen and the text is moving around,
-" or it can be set to be able to move all the way up and down the screen
- set scrolloff=8
-
-" set highlight search hits, can be annoying when they stay highlight after the
-" search
-set nohlsearch
+" set highlight search hits
+set hlsearch
 
 " displays the match when your only partially through typing it
 set incsearch
-set linebreak
 
-" makes it to avoid most of the 'Hit Enter ...' type messages
-set shortmess=aoOtTI
+" linebreak, if on wraps can occur at whatever breakat is
+" set linebreak
 
-" prevents truncated yanks, deletes, etc. (super important if im using the vim
-" buffers to paste stuff to a different file, although probably a bad practise
-" to do that)
-set viminfo='20,<1000,s1000
+" turns bracket matching off
+" let g:loaded_matchparen=1
 
-" command history
-set history=100
-
-" sets bracket matching
-" the if conditional for the eval is the vimtiny check(ie. are we using this
-" vimrc with vimtiny
-if has("eval")
-  let g:loaded_matchparen=1
-endif
-set noshowmatch
-
-" search wrap around file(ie. if you start your search half way down the file,
-" it will go to the top and continue searching
-set wrapscan
+" cursor quickly jumps to a matching bracket
+" set showmatch
 
 " rwxrob says plugins need this, also Max Cantor as well
 " if has("syntax")
@@ -185,70 +195,58 @@ set wrapscan
 " need the conditional
 syntax enable
 
-" allow sensing the filetype, when you start editing a file vim will try to
-" figure out what kind of file it is. see :h write-filetype-plugin to see how to
-" write my own filetype plugins, also see :h write-plugin
-filetype plugin on
-
 " faster scrolling
 set ttyfast
 
-" high contrast background
-" set background=dark
-"
-"this turns on 24 bit colors
-set termguicolors   
+" Sets up a way to do fuzzy finding
+" **(as in star star) tells vim that when you look for a file search through every
+" subdirectory, and search through every subdirectory of every subdirectory, see
+" max cantor's presentation
+set path+=**
 
-" sets background to dark mode
-set background=dark
+" Display all matching files when we tab complete, apparently this can be
+" configured several different ways
+set wildmenu
 
-" sets the colorscheme/theme
-colorscheme elflord
+" :h ins-completion for the auto complete man page
 
+" ##############################################################################
+" ##############################################################################
+" Plugins
 
-" remappings, one to edit vimrc and one to reload the vimrc without having to
-" restart the current session. nnoremap is for normal mode remapping, see :h
-" mapmode-n
-" nnoremap confe :e $HOME/.vimrc<CR>
-" nnoremap confr :source $HOME/.vimrc<CR>
+" You can enable loading the plugin files for specific file types with: >
+filetype plugin on
 
-" this is rwxrobs custom ruler
-" set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
-
-
-
-""""""""""""""""""""PLUGIN""""""""""""""""""""""""""""""""""""
-
-
-" Rob recommeds to use the Plug pluggin manager, as it doesn't mess around with
-" you stuff, and it helps to keep everything clean and separated. see his video
+" Rob recommeds to use the Plug plugin manager, as it doesn't mess around with
+" your stuff, and it helps to keep everything clean and separated. see his video
 " for more
 
-" This is the autoload code taken from the plug git repo(to automatically
-" download and install plug if it not present on the machine)
-"let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-"if empty(glob(data_dir . '/autoload/plug.vim'))
-"  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"  " the --sync flag blocks execution until the installer is finished
-"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"endif
-"
-"" this conditional makes it so the plugins only load if Plug is present
-"" can find plug at github.com/junegunn/vim-plug
-"if filereadable(expand("~/.vim/autoload/plug.vim"))
-"  
-"  " path can be changed to where i put the plugins
-"  call plug#begin('~/autoload/plugplugins')
-"  
-"  " the plugins go here, list them with the plug command
-"
-"
-"  call plug#end()
-"endif
+" start of plug plugin manager stuff
+" autoload plug if not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" start of plugins section
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/tpope/vim-surround'
+
+Plug 'https://github.com/tpope/vim-repeat'
+
+call plug#end()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" see :h write-filetype-plugin to see how to
+" write my own filetype plugins, also see :h write-plugin
 
+" ##############################################################################
+" ##############################################################################
+" key maps
+
+" set mapleader
+let mapleader=","
 
 " maps Y to act the same way as D and C (in that it does the action to the end of line)
 map Y y$
@@ -264,45 +262,19 @@ map <F6> :set nohlsearch!<CR>
 map <F7> :set spell!<CR>
 " map <F12> :set fdm=indent<CR>
 
-" maps page down(originally ctrl-d) to same as lynx(ctrl-n)
-" noremap <C-n> <C-d>
+" ##############################################################################
+" ##############################################################################
+" snippets
 
-" maps page up(originally ctrl-b) to same as lynx(ctrl-p)
-" noremap <C-p> <C-b>
+" edit vimrc
+nnoremap ,evim :e $HOME/.vim/vimrc<CR>
 
-" setups up other vim configs that can be used, see rwxrob video(around
-" 3.20.00ish) and also see :h rtp
-" set rtp^=~/.vimpersonal  "this is from rwxrobs vimrc
-" set rtp^=~/.vimprivate  "this is from rwxrobs vimrc
-" set rtp^=~/.vimwork  "this is from rwxrobs vimrc
+" source vimrc
+nnoremap ,svim :source $HOME/.vim/vimrc<CR>
 
+" reads in html template
+nnoremap ,html :-1read $HOME/.vim/snippets/html<CR>8j3wa
 
-
-" ##############################################################
-" ##############################################################
-
-" Stuff from Max Cantor's presentation 
-
-" ##############################################################
-
-" Sets up a way to do fuzzy finding
-" **(as in star star) tells vim that when you look for a file search through every
-" subdirectory, and search through every subdirectory of every subdirectory
-set path+=**
-
-" Display all matching files when we tab complete, apparently this can be
-" configured several different ways
-set wildmenu
-
-" :h ins-completion for the auto complete man page
-
-" shows the commands your using in the bottom tray thing
-set showcmd
-
-
-" ##############################################################
-" ##############################################################
-
-" SNIPPETS
-
-nnoremap ,html :-1read $PWD/snippets/html<CR>
+" ##############################################################################
+" endoffile
+" ##############################################################################
