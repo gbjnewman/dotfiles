@@ -212,12 +212,6 @@ set wildmenu
 filetype plugin on
 
 " rwxrob says plugins need this, also Max Cantor as well
-" if has("syntax")
-"   syntax enable
-" endif
-" I don't know why rob has the conditional, it seems others are just enabling
-" in. leaving the above in, in case something happens in the future and i did
-" need the conditional
 syntax enable
 
 " Rob recommeds to use the Plug plugin manager, as it doesn't mess around with
@@ -237,6 +231,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/tpope/vim-surround'
 
 Plug 'https://github.com/tpope/vim-repeat'
+
+Plug 'https://github.com/gbjnewman/live-server-vim'
 
 call plug#end()
 
