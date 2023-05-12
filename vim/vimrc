@@ -1,76 +1,47 @@
 " ##############################################################################
-" ##############################################################################
 " Designed for vim 8+.  
-
-" This vimrc is based off of rwxrob's vimrc with influence from Max Cantor's
-" presentation.
-
-" rwxrob references
-" https://github.com/rwxrob/dot/blob/main/vim/.vimrc
-" See https://youtu.be/3mRBUUTL2Uo for rwxrob's breakdown of his vimrc
- 
-" Max Cantor reference
-" how to do 90% of what plugins do with just vim
-" https://www.youtube.com/watch?v=XA2WjJbmmoM
-
 " ##############################################################################
-" ##############################################################################
-" See `:help vimrc` for information on vimrc files
 
-" Tip for navigating the help file. `ctrl-]` will take you to the link under the
-" cursor, and `ctrl-o` will take you back.
+" References :- 
+" rwxrob https://youtu.be/3mRBUUTL2Uo
+" Max Cantor https://www.youtube.com/watch?v=XA2WjJbmmoM
 
-" ##############################################################################
-" ##############################################################################
-" setups up other vim configs that can be used, see rwxrob video(around
-" 3.20.00ish)
-
-" set rtp^=~/.vimpersonal
-" set rtp^=~/.vimprivate
-" set rtp^=~/.vimwork
-
-" ##############################################################################
 " ##############################################################################
 " colorscheme
+" ##############################################################################
 
 colorscheme elflord
 
 " Sets the color of the colorcolumn
 " :hi ColorColumn ctermbg=lightGreen guibg=lightgrey
 
-" make ~ (it represents blank lines, as in nothing in the file) effectively invisible
-" highlight NonText guifg=bg
-
-"this turns on 24 bit colors
+" turns on 24 bit colors
 set termguicolors   
 
-" sets background to dark mode
+" set background to dark mode
 set background=dark
 
 " rwxrob custom ruler
-
 " set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 " ##############################################################################
-" ##############################################################################
 " settings
+" ##############################################################################
 
 " command history
 set history=100
 
-" prevents truncated yanks, deletes, etc. (super important if using the vim
+" This prevents truncated yanks, deletes, etc. (super important if using the vim
 " buffers to paste stuff to a different file)
 set viminfo='20,<1000,s1000
 
 " makes it to avoid most of the 'Hit Enter ...' type messages
 set shortmess=aoOtTI
 
-" stops vim from silently messing with files that it shouldn't. ie messes
-" with line endings(see rwxrobs video for more info)
+" stops vim from silently messing with files that it shouldn't
 set nofixendofline
 
-" search wrap around file(ie. if you start your search half way down the file,
-" it will go to the top and continue searching
+" search wraps from bottom of file back to the top
 set wrapscan
 
 " ascii friendly charactors for when you want to see invisible charactors
@@ -86,7 +57,6 @@ set foldmethod=manual
 " Sets vi compatible mode to off (just use nvi for vi mode)
 set nocompatible
 
-
 " automatically indent new lines
 set autoindent
 
@@ -96,22 +66,22 @@ set breakindent
 " automatically write files when changing when multiple files are open
 set autowrite
 
-" shows the commands your using in the bottom tray thing
+" shows the commands your using in the bottom tray
 set showcmd
 
-" Activates line numbers
+" Sets line numbers
 set number
 
-"set or disables relative line numbers
+" disables relative line numbers
 set norelativenumber
 
-" turn col and row position on in the bottom right
+" turn col and row position on in the bottom right of tray
 set ruler "
 
-" Show insert, replace or visual mode at the bottom when you're in that mode
+" Shows current mode in tray
 set showmode
 
-" need to add explanation to what this is
+" no explaination yet
 set tabstop=2
 
 " disable visual bell
@@ -124,7 +94,7 @@ set softtabstop=2
 " indent or go back this many spaces)
 set shiftwidth=2
 
-" does the smart indenting, see :h smartindent
+" Sets smart indenting
 set smartindent
 
 " sets smarttab, when smarttab is on it inserts blanks(which will be equal to whatever expand tab is
@@ -134,7 +104,7 @@ set smarttab
 " mark trailing spaces as errors
 " match IncSearch '\s\+$'
 
-" Sets how wide inserted text can be (ie when lines will be wrapped)
+" Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
 set textwidth=80
 
 " Sets a colored column in the vim terminal(for example you can set it to see where
@@ -146,7 +116,7 @@ set textwidth=80
 " Sets tabs to equivelent amount of spaces
 set expandtab
 
-" set time out length in milliseconds
+" set time out length in milliseconds(ie. for leaderkey timeout)
 set timeout timeoutlen=2000
 
 " makes an underline on what line the cursor is on
@@ -202,23 +172,22 @@ set path+=**
 " configured several different ways
 set wildmenu
 
+" Set syntax on
+syntax enable
+
 " :h ins-completion for the auto complete man page
 
 " ##############################################################################
-" ##############################################################################
 " Plugins
+" ##############################################################################
 
-" You can enable loading the plugin files for specific file types with: >
+" enable loading the plugin files for specific file types
 filetype plugin on
-
-" rwxrob says plugins need this, also Max Cantor as well
-syntax enable
 
 " Rob recommeds to use the Plug plugin manager, as it doesn't mess around with
 " your stuff, and it helps to keep everything clean and separated. see his video
 " for more
 
-" start of plug plugin manager stuff
 " autoload plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -234,23 +203,28 @@ Plug 'https://github.com/tpope/vim-repeat'
 
 Plug 'https://github.com/gbjnewman/live-server-vim'
 
-call plug#end()
+Plug 'https://github.com/preservim/nerdtree'
 
+call plug#end()
 
 " see :h write-filetype-plugin to see how to
 " write my own filetype plugins, also see :h write-plugin
 
 " ##############################################################################
-" ##############################################################################
 " key maps
-"
-" see
-" https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
-" for an explanation on differences between map, noremap etc. Basically map is
-" recursive and noremap is non recursive
+" ##############################################################################
 
 " set mapleader
 let mapleader=","
+
+" nerdtree open/close toggle
+nnoremap <LEADER>n :NERDTreeToggle<CR>
+
+" remap split window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 " map Y to act the same way as D and C (in that it does the action to the end of line)
 nnoremap Y y$
@@ -262,7 +236,7 @@ nnoremap H ^
 nnoremap L $
 
 " mapping for function keys, the ! at the end before <CR> is to make it so you
-" can turn the thing on and off
+" can toggle on and off
 map <F1> :set number!<CR>
 map <F2> :set relativenumber!<CR>
 set pastetoggle=<F3>   " not sure why its done this way, i just copied rwxrob
@@ -272,19 +246,28 @@ map <F6> :set nohlsearch!<CR>
 map <F7> :set spell!<CR>
 " map <F12> :set fdm=indent<CR>
 
-" ##############################################################################
-" ##############################################################################
-" snippets
+" add line without going into insert mode
+nnoremap <leader>o o<esc>k
 
-" edit vimrc
-nnoremap ,evim :e $HOME/.vim/vimrc<CR>
+" edit vimrc from current session
+nnoremap <leader>evim :e $HOME/.vim/vimrc<CR>
 
-" source vimrc
-nnoremap ,svim :source $HOME/.vim/vimrc<CR>
+" source vimrc from current session
+nnoremap <leader>svim :source $HOME/.vim/vimrc<CR>
 
 " reads in html template
-nnoremap ,html :-1read $HOME/.vim/snippets/html<CR>8j3wa
+nnoremap <leader>html :-1read $HOME/.vim/snippets/html<CR>8j3wa
 
 " ##############################################################################
-" endoffile
+" autocommands
+" ##############################################################################
+
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" ##############################################################################
+" End
 " ##############################################################################
