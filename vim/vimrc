@@ -1,32 +1,108 @@
 " ##############################################################################
 " Designed for vim 8+.  
 " ##############################################################################
+" ##############################################################################
+" Plugins
+" ##############################################################################
 
-" References :- 
-" rwxrob https://youtu.be/3mRBUUTL2Uo
-" Max Cantor https://www.youtube.com/watch?v=XA2WjJbmmoM
+" autoload plug if not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" start of plugins section
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/tpope/vim-surround'
+
+Plug 'https://github.com/tpope/vim-repeat'
+
+Plug 'https://github.com/gbjnewman/live-server-vim'
+
+Plug 'https://github.com/preservim/nerdtree'
+
+call plug#end()
+
+" ##############################################################################
+" NERDTree
+" ##############################################################################
+
+let NERDTreeStatusline='NERDTree - Press ? for help'
 
 " ##############################################################################
 " colorscheme
 " ##############################################################################
-
-colorscheme elflord
-
-" Sets the color of the colorcolumn
-" :hi ColorColumn ctermbg=lightGreen guibg=lightgrey
-
 " turns on 24 bit colors
-set termguicolors   
+" there is a conflict with gruvbox transparancy when this is set
+" set termguicolors
 
-" set background to dark mode
 set background=dark
+colorscheme gruvbox8
+let g:gruvbox_transp_bg = 1
+let g:gruvbox_filetype_hi_groups = 1
+let g:gruvbox_plugin_hi_groups = 1
 
-" rwxrob custom ruler
-" set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
+" ##############################################################################
+" Custom Statusline
+" ##############################################################################
+
+" set statusline to always show, even if not more than one window open
+set laststatus=2
+
+" dictionary to convert mode() output to something more readable
+let g:modedisplay={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '^V' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
+" custom statusline
+"set statusline=%F%M\ \|\|\ Filetype=%Y%=%{g:modedisplay[mode()]}%p%%\ %l,%v
+
+" add full filepath of opened file
+set statusline+=%F
+
+" add filetype
+set statusline+=\ \-\ filetype:%Y
+
+" add a left right split point
+set statusline+=%=
+
+" add current mode
+" set statusline+=\ mode:%{toupper(g:modedisplay[mode()])}
+
+"add percentage through file in lines
+" set statusline+=\ %p%%
+
+" add line number
+set statusline+=\ %l
+
+" add column number
+set statusline+=\,%v
 
 " ##############################################################################
 " settings
 " ##############################################################################
+
+" enable loading plugins for file types
+filetype plugin on
 
 " command history
 set history=100
@@ -35,7 +111,7 @@ set history=100
 " buffers to paste stuff to a different file)
 set viminfo='20,<1000,s1000
 
-" makes it to avoid most of the 'Hit Enter ...' type messages
+" makes it avoid most of the 'Hit Enter ...' type messages
 set shortmess=aoOtTI
 
 " stops vim from silently messing with files that it shouldn't
@@ -52,7 +128,7 @@ set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
 set foldmethod=manual
 
 " if some folds where folded this will open them
- set nofoldenable
+set nofoldenable
 
 " Sets vi compatible mode to off (just use nvi for vi mode)
 set nocompatible
@@ -72,11 +148,14 @@ set showcmd
 " Sets line numbers
 set number
 
+" sets the cursor line to highlight
+set cursorline
+
+" changes cursor line to only highlight numbers
+set cursorlineopt=number
+
 " disables relative line numbers
 set norelativenumber
-
-" turn col and row position on in the bottom right of tray
-set ruler "
 
 " Shows current mode in tray
 set showmode
@@ -118,9 +197,6 @@ set expandtab
 
 " set time out length in milliseconds(ie. for leaderkey timeout)
 set timeout timeoutlen=2000
-
-" makes an underline on what line the cursor is on
-" set cursorline
 
 " turn on default spell checking
 " set spell
@@ -178,39 +254,6 @@ syntax enable
 " :h ins-completion for the auto complete man page
 
 " ##############################################################################
-" Plugins
-" ##############################################################################
-
-" enable loading the plugin files for specific file types
-filetype plugin on
-
-" Rob recommeds to use the Plug plugin manager, as it doesn't mess around with
-" your stuff, and it helps to keep everything clean and separated. see his video
-" for more
-
-" autoload plug if not present
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" start of plugins section
-call plug#begin('~/.vim/plugged')
-
-Plug 'https://github.com/tpope/vim-surround'
-
-Plug 'https://github.com/tpope/vim-repeat'
-
-Plug 'https://github.com/gbjnewman/live-server-vim'
-
-Plug 'https://github.com/preservim/nerdtree'
-
-call plug#end()
-
-" see :h write-filetype-plugin to see how to
-" write my own filetype plugins, also see :h write-plugin
-
-" ##############################################################################
 " key maps
 " ##############################################################################
 
@@ -239,12 +282,6 @@ nnoremap L $
 " can toggle on and off
 map <F1> :set number!<CR>
 map <F2> :set relativenumber!<CR>
-set pastetoggle=<F3>   " not sure why its done this way, i just copied rwxrob
-map <F4> :set list!<CR>
-map <F5> :set cursorline!<CR>
-map <F6> :set nohlsearch!<CR>
-map <F7> :set spell!<CR>
-" map <F12> :set fdm=indent<CR>
 
 " add line without going into insert mode
 nnoremap <leader>o o<esc>k
