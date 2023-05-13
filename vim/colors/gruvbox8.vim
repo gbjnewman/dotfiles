@@ -1458,8 +1458,8 @@ if s:t_Co >= 256
     hi PmenuSel ctermfg=239 ctermbg=109 cterm=bold
     hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
     hi SpecialKey ctermfg=102 ctermbg=NONE cterm=NONE
-    hi StatusLine ctermfg=214 ctermbg=NONE cterm=bold
-    hi StatusLineNC ctermfg=59 ctermbg=NONE cterm=bold
+    hi StatusLine ctermfg=214 ctermbg=NONE cterm=bold,underline
+    hi StatusLineNC ctermfg=59 ctermbg=NONE cterm=bold,underline
     hi TabLine ctermfg=243 ctermbg=237 cterm=NONE
     hi TabLineFill ctermfg=243 ctermbg=237 cterm=NONE
     hi TabLineSel ctermfg=142 ctermbg=237 cterm=NONE
@@ -1468,7 +1468,7 @@ if s:t_Co >= 256
     hi Visual ctermfg=NONE ctermbg=59 cterm=NONE
     hi WildMenu ctermfg=109 ctermbg=239 cterm=bold
     hi Conceal ctermfg=109 ctermbg=NONE cterm=NONE
-    hi Cursor ctermfg=NONE ctermbg=NONE cterm=reverse
+    hi Cursor ctermfg=21 ctermbg=21 cterm=NONE
     hi DiffAdd ctermfg=142 ctermbg=235 cterm=reverse
     hi DiffChange ctermfg=107 ctermbg=235 cterm=reverse
     hi DiffDelete ctermfg=203 ctermbg=235 cterm=reverse

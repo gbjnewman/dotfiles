@@ -30,6 +30,9 @@ call plug#end()
 
 let NERDTreeStatusline='NERDTree - Press ? for help'
 
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
 " ##############################################################################
 " colorscheme
 " ##############################################################################
@@ -38,10 +41,10 @@ let NERDTreeStatusline='NERDTree - Press ? for help'
 " set termguicolors
 
 set background=dark
-colorscheme gruvbox8
 let g:gruvbox_transp_bg = 1
 let g:gruvbox_filetype_hi_groups = 1
 let g:gruvbox_plugin_hi_groups = 1
+colorscheme gruvbox8
 
 " ##############################################################################
 " Custom Statusline
@@ -294,16 +297,6 @@ nnoremap <leader>svim :source $HOME/.vim/vimrc<CR>
 
 " reads in html template
 nnoremap <leader>html :-1read $HOME/.vim/snippets/html<CR>8j3wa
-
-" ##############################################################################
-" autocommands
-" ##############################################################################
-
-" Start NERDTree and leave the cursor in it.
-autocmd VimEnter * NERDTree
-
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " ##############################################################################
 " End
