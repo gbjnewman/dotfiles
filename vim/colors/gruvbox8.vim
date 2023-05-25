@@ -1457,7 +1457,7 @@ if s:t_Co >= 256
     hi PmenuSbar ctermfg=NONE ctermbg=239 cterm=NONE
     hi PmenuSel ctermfg=239 ctermbg=109 cterm=bold
     hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
-    hi SpecialKey ctermfg=102 ctermbg=NONE cterm=NONE
+    hi SpecialKey ctermfg=022 ctermbg=NONE cterm=NONE
     hi StatusLine ctermfg=214 ctermbg=NONE cterm=bold,underline
     hi StatusLineNC ctermfg=59 ctermbg=NONE cterm=bold,underline
     hi TabLine ctermfg=243 ctermbg=237 cterm=NONE

@@ -22,6 +22,8 @@ Plug 'https://github.com/gbjnewman/live-server-vim'
 
 Plug 'https://github.com/preservim/nerdtree'
 
+Plug 'https://github.com/mattn/emmet-vim'
+
 call plug#end()
 
 " ##############################################################################
@@ -79,7 +81,7 @@ let g:modedisplay={
 " custom statusline
 "set statusline=%F%M\ \|\|\ Filetype=%Y%=%{g:modedisplay[mode()]}%p%%\ %l,%v
 
-" add full filepath of opened file
+" add full filepath of opened file to statusline
 set statusline+=%F
 
 " add filetype
@@ -123,9 +125,10 @@ set nofixendofline
 " search wraps from bottom of file back to the top
 set wrapscan
 
-" ascii friendly charactors for when you want to see invisible charactors
-set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
-" set list
+" ascii friendly charactors for when you want to see invisible charactors, nbsp
+" means nonbreaking space, it makes it so an auto line break won't happen.
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\|>
+set list
 
 " turns off automatic folding
 set foldmethod=manual
