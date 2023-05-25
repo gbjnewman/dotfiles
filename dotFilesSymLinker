@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# check to see if ~/.vim is non existant, if it isn't, it makes it
+if [ ! -d "$HOME"/.vim ]; then
+  mkdir "$HOME"/.vim
+  # links vim folder contents to ~/.vim
+  ln -sf "$PWD"/vim/* "$HOME"/.vim/
+fi
+
+ln -sf "$PWD"/bashfiles/bashrc "$HOME"/.bashrc
+
+
