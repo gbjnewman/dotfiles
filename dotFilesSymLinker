@@ -4,7 +4,7 @@
 if [ ! -d "$HOME"/.vim ]; then
   mkdir "$HOME"/.vim
   # links vim folder contents to ~/.vim
-  ln -sf "$HOME"/repos/github/vim/* "$HOME"/.vim/
+  ln -sf "$PWD"/vim/* "$HOME"/.vim/
 fi
 
-ln -sf "$HOME"/repos/github/bashfiles/bashrc "$HOME"/.bashrc
+ln -sf "$PWD/bashfiles/bashrc "$HOME"/.bashrc
