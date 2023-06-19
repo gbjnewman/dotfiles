@@ -1,10 +1,21 @@
 #!/bin/bash
 
-# check to see if ~/.vim is non existant, if it isn't, it makes it
-if [ ! -d "$HOME"/.vim ]; then
-  mkdir "$HOME"/.vim
-  # links vim folder contents to ~/.vim
-  ln -sf "$PWD"/vim/* "$HOME"/.vim/
-fi
+# this script is to make symlinking all my dotfiles faster on new installs
 
+# link vim
+# -----------------
+if [ ! -d "$HOME"/.vim ]; then #if no folder in home
+  mkdir "$HOME"/.vim # make folder in home
+fi
+ln -sf "$PWD"/vim/* "$HOME"/.vim/
+
+# link bashrc
+# -----------
 ln -sf "$PWD"/bashfiles/bashrc "$HOME"/.bashrc
+
+# link gpg
+# --------
+if [ ! -d "$HOME"/.gnupg ]; then #if no folder in home
+  mkdir "$HOME"/.gnupg # make folder
+fi
+ln -sf "$PWD"/gnupg/* "$HOME"/.gnupg/

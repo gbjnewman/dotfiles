@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Starts sudo timeout for rest of script
+# -------------------------------------
+sudo echo "sudo password has been entered"
+
+# array of programs to install
+# ----------------------------
+declare -a programs=(
+"pass"
+"vim"
+"git"
+"pinentry-tty"
+"shellcheck"
+)
+
+# installs programs onto system
+# -----------------------------
+for i in "${programs[@]}"; do              # loops through programs array
+  if ! command -v "$i" &>/dev/null; then          # checks if programm not exist
+    echo "installing $i"
+    sudo apt-get install "$i" -y          # installs programm if not exist
+  fi
+done
+
+# makes folder for repos
+# ---------------------
+if [ ! -d "$HOME/repos/github/" ]; then            #if no directory for repos
+    echo "creating home/repos/github/"
+    mkdir -p "$HOME"/repos/github && echo "home/repos/github/ has been created"  #make the directory
+fi
+
+# clone repos in
+# -----------------------
+echo "cloning repos"
+if ! command -v git &>/dev/null; then            #if no git
+  echo "git not installed"      #echo no git
+  exit
+else
+  if [ ! -d "$HOME/repos/github/dotfiles/" ]; then      #if dotfiles directory not exist
+    cd "$HOME"/repos/github/ || exit        #cd to github folder, or exit if fail
+    git clone git@github.com:gbjnewman/dotfiles.git    #clone in dotfiles repo via ssh
+  fi
+fi
+# symlink dotfiles
+# ---------------
+cd "$HOME"/repos/github/dotfiles || exit          #cd to dotfiles or exit
+echo "sym linking dotfiles with dotFilesSymlinker"
+./dotFilesSymLinker                #run dotFilesSymlinker
