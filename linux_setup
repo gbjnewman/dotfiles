@@ -6,6 +6,8 @@
 # install repos i use
 # download dotfiles and symlink them
 # setup ssh and gpg
+# install password manager
+# setup browser including bookmarks
 
 # Starts sudo timeout for rest of script
 # -------------------------------------
