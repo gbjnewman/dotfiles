@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# things that need to be done on a new system
+# -------------------------------------------
+# install programs i use
+# install repos i use
+# download dotfiles and symlink them
+# setup ssh and gpg
+
 # Starts sudo timeout for rest of script
 # -------------------------------------
 sudo echo "sudo password has been entered"
@@ -31,7 +38,7 @@ if [ ! -d "$HOME/repos/github/" ]; then            #if no directory for repos
 fi
 
 # clone repos in
-# -----------------------
+# --------------
 echo "cloning repos"
 if ! command -v git &>/dev/null; then            #if no git
   echo "git not installed"      #echo no git
