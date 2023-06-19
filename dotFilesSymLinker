@@ -12,10 +12,3 @@ ln -sf "$PWD"/vim/* "$HOME"/.vim/
 # link bashrc
 # -----------
 ln -sf "$PWD"/bashfiles/bashrc "$HOME"/.bashrc
-
-# link gpg
-# --------
-if [ ! -d "$HOME"/.gnupg ]; then #if no folder in home
-  mkdir "$HOME"/.gnupg # make folder
-fi
-ln -sf "$PWD"/gnupg/* "$HOME"/.gnupg/
