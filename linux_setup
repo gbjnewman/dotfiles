@@ -2,11 +2,12 @@
 
 # things that need to be done on a new system
 # -------------------------------------------
-# install programs i use
-# install repos i use
-# download dotfiles and symlink them
+# install programs
+# install repos
+# download dotfiles and symlink
 # setup ssh and gpg
 # install password manager
+# setup git, incuding auto sign all commits
 # setup browser including bookmarks and plugins
 
 
