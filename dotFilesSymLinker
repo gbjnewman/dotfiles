@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# this script is to make symlinking all my dotfiles faster on new installs
+# sym link dotfiles
 
-# link vim
+# link .vim
 # -----------------
 if [ ! -d "$HOME"/.vim ]; then #if no folder in home
   mkdir "$HOME"/.vim # make folder in home
