@@ -1,32 +1,59 @@
 #!/bin/bash
 
-# things that need to be done on a new system
-# -------------------------------------------
-# install programs
-# install repos
-# download dotfiles and symlink
-# setup ssh and gpg
-# install password manager
-# setup git, incuding auto sign all commits
-# setup browser including bookmarks and plugins
-
-
-# Starts sudo timeout for rest of script
-# -------------------------------------
+# ensure sudo has been set
+# ------------------------
 sudo echo "sudo password has been entered"
 
-# array of programs to install
-# ----------------------------
+# remove unwanted standard ubuntu folders
+# ---------------------------------------
+declare -a rmfldrs=(
+"Desktop"
+"Documents"
+"Downloads"
+"Music"
+"Pictures"
+"Templates"
+"Public"
+"Videos"
+)
+
+for i in "${rmfldrs[@]}"; do              # loops through array
+  if [ -d "$HOME/$i" ]; then            #if directory
+    echo "removing $i"
+    rmdir "$HOME/$i"
+  fi
+done
+
+# add new folders
+# ---------------
+declare -a mkfldrs=(
+"desktop"
+"downloads"
+)
+
+for i in "${mkfldrs[@]}"; do              # loops through array
+  if [ ! -d "$HOME/$i" ]; then            #if not directory
+    echo "adding $i folder"
+    mkdir "$HOME/$i"
+  fi
+done
+
+# update xdg
+# ----------
+echo "updating xdg user directories"
+xdg-user-dirs-update --set DESKTOP "$HOME"/desktop
+xdg-user-dirs-update --set DOWNLOAD "$HOME"/downloads
+xdg-user-dirs-update
+
+# install Programs
+# ----------------
 declare -a programs=(
 "pass"
 "vim"
 "git"
-"pinentry-tty"
 "shellcheck"
 )
 
-# installs programs onto system
-# -----------------------------
 for i in "${programs[@]}"; do              # loops through programs array
   if ! command -v "$i" &>/dev/null; then          # checks if programm not exist
     echo "installing $i"
@@ -34,7 +61,15 @@ for i in "${programs[@]}"; do              # loops through programs array
   fi
 done
 
-# makes folder for repos
+# git config
+# ----------------
+echo 'setting up git config user and email'
+read -r -p 'enter git user email: ' git_email
+read -r -p 'enter git user name: ' git_name
+git config --global user.email "$git_email"
+git config --global user.name "$git_name"
+
+# make repo folders
 # ---------------------
 if [ ! -d "$HOME/repos/github/" ]; then            #if no directory for repos
     echo "creating home/repos/github/"
@@ -44,15 +79,21 @@ fi
 # clone repos in
 # --------------
 echo "cloning repos"
+declare -a git_repos=(
+"git@github.com:gbjnewman/dotfiles.git"
+"git@github.com:gbjnewman/utility_scripts.git"
+)
 if ! command -v git &>/dev/null; then            #if no git
   echo "git not installed"      #echo no git
-  exit
+  echo "installing git"
+  sudo apt-get install git      #install git
 else
-  if [ ! -d "$HOME/repos/github/dotfiles/" ]; then      #if dotfiles directory not exist
-    cd "$HOME"/repos/github/ || exit        #cd to github folder, or exit if fail
-    git clone git@github.com:gbjnewman/dotfiles.git    #clone in dotfiles repo via ssh
-  fi
+  for i in "${git_repos[@]}"; do              # loops through array
+    cd "$HOME"/repos/github/
+    git clone $i
+  done
 fi
+
 # symlink dotfiles
 # ---------------
 cd "$HOME"/repos/github/dotfiles || exit          #cd to dotfiles or exit
