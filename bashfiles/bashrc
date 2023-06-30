@@ -74,19 +74,17 @@ esac
 # *)
 #     ;;
 # esac
-#export PS1="\[\033[38;5;2m\]\u:\[$(tput sgr0)\]\[\033[38;5;6m\]\w\[$(tput sgr0)\] \n\[$(tput sgr0)\]\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
 my_prompt=''
 my_prompt+="\[\033[38;5;197;1m\]--"
 my_prompt+="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
 my_prompt+="--\[\e[0m\] "
 my_prompt+="\[\033[38;5;2m\]\u:\[$(tput sgr0)\]"
 my_prompt+="\[\033[38;5;6m\]\w\[$(tput sgr0)\]"
-#my_prompt+="\[$(tput sgr0)\]"
 my_prompt+="\n"
 my_prompt+="\[\033[38;5;197;1m\]\$ "
 my_prompt+="\[$(tput sgr0)\]" #end colors
 export PS1=$my_prompt
-#export PS1="\[\e[38;5;197;1m\]----\[\e[0m\] \[\033[38;5;2m\]\u:\[$(tput sgr0)\]\[\033[38;5;6m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;197m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /')\n\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

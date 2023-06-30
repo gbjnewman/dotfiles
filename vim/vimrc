@@ -18,8 +18,6 @@ Plug 'https://github.com/tpope/vim-surround'
 
 Plug 'https://github.com/tpope/vim-repeat'
 
-Plug 'https://github.com/gbjnewman/live-server-vim'
-
 Plug 'https://github.com/preservim/nerdtree'
 
 Plug 'https://github.com/mattn/emmet-vim'
@@ -43,10 +41,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " set termguicolors
 
 set background=dark
-let g:gruvbox_transp_bg = 1
-let g:gruvbox_filetype_hi_groups = 1
-let g:gruvbox_plugin_hi_groups = 1
-colorscheme gruvbox8
+colorscheme amber
 
 " ##############################################################################
 " Custom Statusline
