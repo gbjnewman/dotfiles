@@ -10,8 +10,8 @@ let colors_name = "amber"
 
 " Basics
 hi Normal           ctermfg=166      ctermbg=NONE
-hi ErrorMsg         ctermfg=white      ctermbg=red
-hi Visual           ctermfg=lightgrey  ctermbg=green
+hi ErrorMsg         ctermfg=166      ctermbg=NONE
+hi Visual           ctermfg=black  ctermbg=green  term=none cterm=none
 hi Todo             ctermfg=black      ctermbg=166
 hi NonText          ctermfg=166
 hi Question         ctermfg=166
