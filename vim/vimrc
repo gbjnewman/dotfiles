@@ -41,7 +41,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " set termguicolors
 
 set background=dark
-colorscheme amber
+colorscheme molokai
 
 " ##############################################################################
 " Custom Statusline
