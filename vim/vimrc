@@ -34,14 +34,15 @@ let NERDTreeStatusline='NERDTree - Press ? for help'
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " ##############################################################################
-" colorscheme
+" colorscheme / theme
 " ##############################################################################
 " turns on 24 bit colors
 " there is a conflict with gruvbox transparancy when this is set
 " set termguicolors
 
+set t_Co=256
 set background=dark
-colorscheme industry
+colorscheme molokai_gbjn
 
 " ##############################################################################
 " Custom Statusline

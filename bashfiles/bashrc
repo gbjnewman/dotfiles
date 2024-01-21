@@ -19,7 +19,7 @@ shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-# set vi mode for history
+# set vi mode
 set -o vi
 
 # check the window size after each command and, if necessary,
@@ -120,6 +120,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+alias dotfiles='cd $HOME/repos/github/dotfiles/'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
