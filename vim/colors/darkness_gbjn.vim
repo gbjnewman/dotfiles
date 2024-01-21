@@ -7,7 +7,21 @@
 set background=dark
 hi clear
 if exists('syntax on') | syntax reset | endif
-let g:colors_name='darkness'
+let g:colors_name='darkness_gbjn'
+
+" Cursor shape mode swap ------------------------------------------------------
+" 1 or·0·->·blinking·block
+"·2·->·solid·block
+"·3·->·blinking·underscore
+"·4·->·solid·underscore
+"·Recent·versions·of·xterm·(282·or·above)·also·support
+"·5·->·blinking·vertical·bar
+"·6·->·solid·vertical·bar
+
+"·Insert·Mode
+let &t_SI .= "\<Esc>[6·q"
+"·Normal·Mode
+let &t_EI .= "\<Esc>[1·q"
 
 " HIGHLIGHTS ------------------------------------------------------------------
 
