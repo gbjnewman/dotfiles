@@ -5,6 +5,7 @@
 " Plugins
 " ##############################################################################
 
+
 " autoload plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -42,11 +43,12 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 set t_Co=256
 set background=dark
-colorscheme darkness_gbjn
+colorscheme elflord_gbjn
 
 " ##############################################################################
 " Custom Statusline
 " ##############################################################################
+
 
 " set statusline to always show, even if not more than one window open
 set laststatus=2
@@ -101,6 +103,9 @@ set statusline+=\,%v
 " ##############################################################################
 " settings
 " ##############################################################################
+
+" returns cursor position to same spot as last position on exit
+silent! source $VIMRUNTIME/defaults.vim
 
 " enable loading plugins for file types
 filetype plugin on
