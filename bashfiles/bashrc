@@ -122,9 +122,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 alias dotfiles='cd $HOME/repos/github/dotfiles/'
+alias scripts='cd $HOME/repos/github/scripts/'
 #make path more readable by adding newline inbetween directories
 alias path='echo -e "${PATH//:/\\n}"'
-alias vimrc_edit='vim $HOME/repos/github/dotfiles/vim/vimrc'
+alias vimrc_edit='vim $HOME/repos/github/dotfiles/vimfiles/vim/vimrc'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
