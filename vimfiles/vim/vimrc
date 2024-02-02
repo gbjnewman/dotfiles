@@ -12,16 +12,19 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" start of plugins section
+" ##############################################################################
+" plugins
+" ##############################################################################
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/tpope/vim-surround'
 
-Plug 'https://github.com/tpope/vim-repeat'
+"Plug 'https://github.com/tpope/vim-repeat'
 
-Plug 'https://github.com/preservim/nerdtree'
+"Plug 'https://github.com/preservim/nerdtree'
 
-Plug 'https://github.com/mattn/emmet-vim'
+"Plug 'https://github.com/mattn/emmet-vim'
 
 call plug#end()
 
@@ -279,11 +282,11 @@ nnoremap <C-k> <C-w>k
 " map Y to act the same way as D and C (in that it does the action to the end of line)
 nnoremap Y y$
 
-" map H to move to the beginning of the line
-nnoremap H ^
+" map H to move to the beginning of the word
+nnoremap H b
 
-" map L to move to the end of the line
-nnoremap L $
+" map L to move to the end of the word
+nnoremap L w
 
 " mapping for function keys, the ! at the end before <CR> is to make it so you
 " can toggle on and off
@@ -299,8 +302,7 @@ nnoremap <leader>evim :e $HOME/.vim/vimrc<CR>
 " source vimrc from current session
 nnoremap <leader>svim :source $HOME/.vim/vimrc<CR>
 
-" reads in html template
-nnoremap <leader>html :-1read $HOME/.vim/snippets/html<CR>8j3wa
+nnoremap \\ :noh<return>
 
 " ##############################################################################
 " End
