@@ -18,7 +18,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com/tpope/vim-surround'
+"Plug 'https://github.com/tpope/vim-surround'
 
 "Plug 'https://github.com/tpope/vim-repeat'
 
@@ -303,6 +303,11 @@ nnoremap <leader>evim :e $HOME/.vim/vimrc<CR>
 nnoremap <leader>svim :source $HOME/.vim/vimrc<CR>
 
 nnoremap \\ :noh<return>
+" ##############################################################################
+" AUTOCMD
+" ##############################################################################
+" makes it autocomple curly brackets in c
+autocmd FileType c,cpp inoremap { {<CR>}<Esc>O
 
 " ##############################################################################
 " End
