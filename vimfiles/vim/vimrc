@@ -231,7 +231,8 @@ nnoremap \\ :nohlsearch<return>
 " AUTOCMD
 
 " make autocomple curly brackets in c
-autocmd FileType c,cpp inoremap { {<CR>}<Esc>O
+"autocmd FileType c,cpp inoremap { {<CR>}<Esc>O
+autocmd FileType c,cpp inoremap <expr> <CR> getline('.') =~ '.*)$' ? "<CR>{<CR>}<Esc>O" : "<CR>"
 
 " ##############################################################################
 " end of vimrc
