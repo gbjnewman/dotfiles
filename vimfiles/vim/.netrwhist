@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/home/gtunt/repos/github/dotfiles'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/gtunt/repos/github'
+let g:netrw_dirhist_6='/home/gtunt/repos/github/sim8086'
+let g:netrw_dirhist_5='/home/gtunt/repos/github'
+let g:netrw_dirhist_4='/home/gtunt/repos'
+let g:netrw_dirhist_3='/home/gtunt'
+let g:netrw_dirhist_2='/home/gtunt/repos/github/sim8086'
+let g:netrw_dirhist_1='/home/gtunt/repos/github'
+let g:netrw_dirhist_0='/home/gtunt/repos'
+let g:netrw_dirhist_9='/home/gtunt'
+let g:netrw_dirhist_8='/home/gtunt/repos/github/computer-enhance/part-one/02-decoding_multiple_instructions_and_suffixes'

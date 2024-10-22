@@ -1,60 +1,55 @@
 " ##############################################################################
-" Designed for vim 8+.  
-" ##############################################################################
-" ##############################################################################
-" Plugins
-" ##############################################################################
+" Designed for vim 8+.
 
 
-" autoload plug if not present
+" ##############################################################################
+" Plugin section
+
+" autoload plug pluggin manager if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" ##############################################################################
-" plugins
-" ##############################################################################
-
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged') " initilise vim-plug and tell it where to install plugins
 
 "Plug 'https://github.com/tpope/vim-surround'
 
 "Plug 'https://github.com/tpope/vim-repeat'
 
-"Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/preservim/nerdtree' " nerdtree file navigator
 
 "Plug 'https://github.com/mattn/emmet-vim'
 
-call plug#end()
+call plug#end() " finalize plugin installation and loading
 
 " ##############################################################################
-" NERDTree
-" ##############################################################################
+" NERDTree settings
 
-let NERDTreeStatusline='NERDTree - Press ? for help'
+let NERDTreeStatusline='NERDTree - Press ? for help' " set a text message in the status line
 
-" Exit Vim if NERDTree is the only window remaining in the only tab.
+" map l to open file or directory (same as enter)
+autocmd FileType nerdtree nmap <buffer> l <CR>
+
+" map h to go up one directory
+autocmd FileType nerdtree nmap <buffer> h :NERDTreeUp<CR>
+
+" this sets so vim exits if NERDTree is the only window/tab remaining open
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
 
 " ##############################################################################
 " colorscheme / theme
-" ##############################################################################
-" turns on 24 bit colors
-" there is a conflict with gruvbox transparancy when this is set
-" set termguicolors
 
-set t_Co=256
+"set termguicolors " turns on 24 bit colors. there is a conflict with gruvbox transparancy when this is set
+"set t_Co=256 " deprecated way of telling vim to use 256 colors
 set background=dark
 colorscheme elflord_gbjn
 
 " ##############################################################################
 " Custom Statusline
-" ##############################################################################
 
-
-" set statusline to always show, even if not more than one window open
-set laststatus=2
+set laststatus=2 " set statusline to always show, even if not more than one window open
 
 " dictionary to convert mode() output to something more readable
 let g:modedisplay={
@@ -79,199 +74,132 @@ let g:modedisplay={
     \ 't'  : 'Terminal'
     \}
 
-" custom statusline
-"set statusline=%F%M\ \|\|\ Filetype=%Y%=%{g:modedisplay[mode()]}%p%%\ %l,%v
+set statusline+=%F " add full filepath of opened file to statusline
 
-" add full filepath of opened file to statusline
-set statusline+=%F
+set statusline+=\ \-\ filetype:%Y " add filetype
 
-" add filetype
-set statusline+=\ \-\ filetype:%Y
+set statusline+=%= " add a left right split point
 
-" add a left right split point
-set statusline+=%=
+"set statusline+=\ mode:%{toupper(g:modedisplay[mode()])} " add current mode
 
-" add current mode
-" set statusline+=\ mode:%{toupper(g:modedisplay[mode()])}
+"set statusline+=\ %p%% "add percentage through file in lines
 
-"add percentage through file in lines
-" set statusline+=\ %p%%
+set statusline+=\line\ %l " add line number
 
-" add line number
-set statusline+=\ %l
-
-" add column number
-set statusline+=\,%v
+set statusline+=\:col\ %v " add column number
 
 " ##############################################################################
-" settings
-" ##############################################################################
+" misc settings
 
-" returns cursor position to same spot as last position on exit
-silent! source $VIMRUNTIME/defaults.vim
+set nocompatible " Sets vi compatible mode to off (just use nvi for vi mode)
 
-" enable loading plugins for file types
-filetype plugin on
+silent! source $VIMRUNTIME/defaults.vim " ensures that Vim's default settings are loaded quietly without error messages. will restore cursor position
 
-" command history
-set history=100
+filetype plugin on " enable loading of file type specific plugins and settings
 
-" This prevents truncated yanks, deletes, etc. (super important if using the vim
-" buffers to paste stuff to a different file)
-set viminfo='20,<1000,s1000
+set history=1000 " command history, vim default is 50
 
-" makes it avoid most of the 'Hit Enter ...' type messages
-set shortmess=aoOtTI
+set viminfo='20,<1000,s1000 " persistant command history, search history, and registers across sessions
 
-" stops vim from silently messing with files that it shouldn't
-set nofixendofline
+set shortmess=aoOtTI " makes it avoid most of the 'Hit Enter ...' type messages
 
-" search wraps from bottom of file back to the top
-set wrapscan
+set nofixendofline " stops vim from silently messing with files that it shouldn't
 
-" ascii friendly charactors for when you want to see invisible charactors, nbsp
-" means nonbreaking space, it makes it so an auto line break won't happen.
-set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\|>
-set list
+set wrapscan " search wraps from bottom of file back to the top
 
-" turns off automatic folding
-set foldmethod=manual
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\|> " ascii friendly invisible characters
 
-" if some folds where folded this will open them
-set nofoldenable
+set list " turns on invisible characters
 
-" Sets vi compatible mode to off (just use nvi for vi mode)
-set nocompatible
+set foldmethod=manual " turns off automatic folding
 
-" automatically indent new lines
-set autoindent
+set nofoldenable " if some folds where folded this will open them
 
-" indenting for wrapped lines
-set breakindent
+set autoindent " automatically indent new lines
 
-" automatically write files when changing when multiple files are open
-set autowrite
+set breakindent " indenting for wrapped lines
 
-" shows the commands your using in the bottom tray
-set showcmd
+set autowrite " automatically save the current file when switching between files
 
-" Sets line numbers
-set number
+set showcmd " shows the commands your using in the bottom tray
 
-" sets the cursor line to highlight
-set cursorline
+set number " Sets line numbers
 
-" changes cursor line to only highlight numbers
-set cursorlineopt=number
+set cursorline " sets the cursor line to highlight
 
-" disables relative line numbers
-set norelativenumber
+set cursorlineopt=number " changes cursor line to only highlight numbers
 
-" Shows current mode in tray
-set showmode
+set norelativenumber " disables relative line numbers
 
-" no explaination yet
-set tabstop=2
+set showmode " Shows current mode in tray
 
-" disable visual bell
-set t_vb=
+set t_vb= " disable visual bell
 
-" softtabstop, 
-set softtabstop=2
+set smarttab " Make Tab key respect shiftwidth for indentation and tabstop elsewhere
 
-" sets shiftwidth width (when you are in normal mode press >> or << and it will
-" indent or go back this many spaces)
-set shiftwidth=2
+set tabstop=4 " sets the visual representation of tabwidth
 
-" Sets smart indenting
-set smartindent
+set softtabstop=4 " softtabstop, 
 
-" sets smarttab, when smarttab is on it inserts blanks(which will be equal to whatever expand tab is
-" set to) according to shiftwidth.
-set smarttab
+set expandtab " Sets tabs to equivelent amount of spaces
 
-" mark trailing spaces as errors
-" match IncSearch '\s\+$'
+set shiftwidth=4 " sets shiftwidth width (when you are in normal mode press >> or << and it will indent or go back this many spaces)
 
-" Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
-set textwidth=80
+set smartindent " Sets smart indenting
 
-" Sets a colored column in the vim terminal(for example you can set it to see where
-" your textwidth ends) the +4 setting uses the textwidth then
-" +4 to indicate where the column should go(it's +4 here and not +1 because line
-" numbers are turned on, and they take up 3 columns)
-" set colorcolumn=+4
+"match IncSearch '\s\+$' " mark trailing spaces as errors
 
-" Sets tabs to equivelent amount of spaces
-set expandtab
+"set textwidth=80 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
 
-" set time out length in milliseconds(ie. for leaderkey timeout)
-set timeout timeoutlen=2000
+"set colorcolumn=+4 " Sets a colored column in the vim terminal
 
-" turn on default spell checking
-" set spell
+set timeout timeoutlen=2000 " set time out length in milliseconds(ie. for leaderkey timeout)
 
-" disable spellcapcheck(it checks for a capital as the next word to find the
-" end of a sentence) see :h spellcapcheck
-set spellcapcheck=
+"set spell " turn on default spell checking
 
-" risky, but keeps your files and folders cleaner
-set nobackup
-set noswapfile
-set nowritebackup
+set spellcapcheck= " Disable checking for capitalization at the start of sentences during spell check
 
-" no sure what this does, neither does rwxrob. He thought it had something to
-" do with tmux window titles or something. Leaving it in
-" I believe this just sets the icon text for the window, only works on x11
-" gui's. the icon text uses the file name unless you set iconstring to something
-" non empty
-set icon
+set ignorecase " ignore case during search
 
-" sets how much room the cursor has to move  up and down the screen
-set scrolloff=8
+set smartcase " if search query contains uppercase, vim will switch to case sensitive search
 
-" set highlight search hits
-set hlsearch
+set nobackup " Disable creating backup files (~ files) when saving
 
-" displays the match when your only partially through typing it
-set incsearch
+"set noswapfile " Disable creating swap files (.swp), which disables crash recovery
 
-" linebreak, if on wraps can occur at whatever breakat is
-" set linebreak
+set directory^=$HOME/.vim/swapfiles// " store swapfiles in a custom location/directory
 
-" turns bracket matching off
-" let g:loaded_matchparen=1
+set nowritebackup " Disable creating temporary backup files during file writes
 
-" cursor quickly jumps to a matching bracket
-" set showmatch
+set icon " Sets the icon text for the Vim window (only affects gVim on X11 GUIs), might affect tmux titles
 
-" faster scrolling
-set ttyfast
+set scrolloff=8 " Keep at least 8 lines of context visible above and below the cursor while scrolling
 
-" Sets up a way to do fuzzy finding
-" **(as in star star) tells vim that when you look for a file search through every
-" subdirectory, and search through every subdirectory of every subdirectory, see
-" max cantor's presentation
-set path+=**
+set hlsearch " set highlight search hits
 
-" Display all matching files when we tab complete, apparently this can be
-" configured several different ways
-set wildmenu
+"set incsearch " displays the match when your only partially through typing it
 
-" Set syntax on
-syntax enable
+"set linebreak " linebreak, if on wraps can occur at whatever breakat is
 
-" :h ins-completion for the auto complete man page
+"let g:loaded_matchparen=1 " turns bracket matching off
+
+"set showmatch " cursor quickly jumps to a matching bracket
+
+set ttyfast " faster scrolling
+
+"set path+=** " Sets up a way to do fuzzy finding. see max cantor's presentation
+
+set wildmenu " Display all matching files when we tab complete
+
+syntax enable " Set syntax on
 
 " ##############################################################################
 " key maps
-" ##############################################################################
 
-" set mapleader
-let mapleader=","
+let mapleader="," " set mapleader key
 
 " nerdtree open/close toggle
-nnoremap <LEADER>n :NERDTreeToggle<CR>
+nnoremap <LEADER>n :NERDTreeToggle<CR> 
 
 " remap split window navigation
 nnoremap <C-h> <C-w>h
@@ -293,22 +221,18 @@ nnoremap L w
 map <F1> :set number!<CR>
 map <F2> :set relativenumber!<CR>
 
-" add line without going into insert mode
+" add line after without going into insert mode
 nnoremap <leader>o o<esc>k
 
-" edit vimrc from current session
-nnoremap <leader>evim :e $HOME/.vim/vimrc<CR>
+" maps \\ to turn off search highlighting
+nnoremap \\ :nohlsearch<return>
 
-" source vimrc from current session
-nnoremap <leader>svim :source $HOME/.vim/vimrc<CR>
-
-nnoremap \\ :noh<return>
 " ##############################################################################
 " AUTOCMD
-" ##############################################################################
-" makes it autocomple curly brackets in c
+
+" make autocomple curly brackets in c
 autocmd FileType c,cpp inoremap { {<CR>}<Esc>O
 
 " ##############################################################################
-" End
+" end of vimrc
 " ##############################################################################
