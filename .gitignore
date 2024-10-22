@@ -1,2 +1,2 @@
 # ignore vim/plugged folder
-vim/plugged/*
+vimfiles/vim/plugged/*
