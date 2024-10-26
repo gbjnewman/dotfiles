@@ -42,9 +42,9 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " colorscheme / theme
 
 "set termguicolors " turns on 24 bit colors. there is a conflict with gruvbox transparancy when this is set
-"set t_Co=256 " deprecated way of telling vim to use 256 colors
+set t_Co=256 " deprecated way of telling vim to use 256 colors
 set background=dark
-colorscheme elflord_gbjn
+colorscheme darkness_gbjn
 
 " ##############################################################################
 " Custom Statusline
@@ -107,7 +107,7 @@ set nofixendofline " stops vim from silently messing with files that it shouldn'
 
 set wrapscan " search wraps from bottom of file back to the top
 
-set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\|> " ascii friendly invisible characters
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\│\· " ascii friendly invisible characters
 
 set list " turns on invisible characters
 
@@ -141,7 +141,7 @@ set tabstop=4 " sets the visual representation of tabwidth
 
 set softtabstop=4 " softtabstop, 
 
-set expandtab " Sets tabs to equivelent amount of spaces
+"set expandtab " Sets tabs to equivelent amount of spaces
 
 set shiftwidth=4 " sets shiftwidth width (when you are in normal mode press >> or << and it will indent or go back this many spaces)
 
@@ -230,9 +230,11 @@ nnoremap \\ :nohlsearch<return>
 " ##############################################################################
 " AUTOCMD
 
-" make autocomple curly brackets in c
-"autocmd FileType c,cpp inoremap { {<CR>}<Esc>O
+" make autocomple curly brackets in c after function declaration
 autocmd FileType c,cpp inoremap <expr> <CR> getline('.') =~ '.*)$' ? "<CR>{<CR>}<Esc>O" : "<CR>"
+
+" make autocomple curly brackets in c at start of line
+autocmd FileType c,cpp inoremap <expr>{ getline('.')[col('.') - 1] == '' ? '{<CR>}<Esc>O' : '{'
 
 " ##############################################################################
 " end of vimrc

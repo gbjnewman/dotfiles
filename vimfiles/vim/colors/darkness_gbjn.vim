@@ -19,9 +19,9 @@ let g:colors_name='darkness_gbjn'
 "·6·->·solid·vertical·bar
 
 "·Insert·Mode
-let &t_SI .= "\<Esc>[6·q"
+let &t_SI .= "\<Esc>[5 q"
 "·Normal·Mode
-let &t_EI .= "\<Esc>[1·q"
+let &t_EI .= "\<Esc>[1 q"
 
 " HIGHLIGHTS ------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ hi! Question        cterm=NONE            ctermfg=9     ctermbg=NONE
 hi! QuickFixLine    cterm=underline       ctermfg=NONE  ctermbg=NONE
 hi! Search          cterm=NONE            ctermfg=249   ctermbg=240
 hi! SignColumn      cterm=NONE            ctermfg=NONE  ctermbg=16
-hi! SpecialKey      cterm=NONE            ctermfg=240  ctermbg=NONE
+hi! SpecialKey      cterm=NONE            ctermfg=236  ctermbg=NONE
 hi! StatusLine      cterm=NONE            ctermfg=245   ctermbg=233
 hi! StatusLineNC    cterm=NONE            ctermfg=240   ctermbg=234
 hi! StatusLineTerm  cterm=NONE            ctermfg=0     ctermbg=121
