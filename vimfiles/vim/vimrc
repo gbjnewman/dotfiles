@@ -35,16 +35,22 @@ autocmd FileType nerdtree nmap <buffer> l <CR>
 autocmd FileType nerdtree nmap <buffer> h :NERDTreeUp<CR>
 
 " this sets so vim exits if NERDTree is the only window/tab remaining open
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter *
+	\ if tabpagenr('$') == 1 
+	\ && winnr('$') == 1
+	\ && exists('b:NERDTree')
+	\ && b:NERDTree.isTabTree()
+	\ | quit
+	\ | endif
 
 
 " ##############################################################################
 " colorscheme / theme
 
-"set termguicolors " turns on 24 bit colors. there is a conflict with gruvbox transparancy when this is set
+"set termguicolors " turns on 24 bit colors
 set t_Co=256 " deprecated way of telling vim to use 256 colors
 set background=dark
-colorscheme darkness_gbjn
+colorscheme molokai_gbjn
 
 " ##############################################################################
 " Custom Statusline
@@ -84,36 +90,63 @@ set statusline+=%= " add a left right split point
 
 "set statusline+=\ %p%% "add percentage through file in lines
 
-set statusline+=\line\ %l " add line number
+set statusline+=\line\ %l\  " add line number
 
-set statusline+=\:col\ %v " add column number
+set statusline+=\:\ col\ %v " add column number
 
 " ##############################################################################
 " misc settings
 
 set nocompatible " Sets vi compatible mode to off (just use nvi for vi mode)
 
-silent! source $VIMRUNTIME/defaults.vim " ensures that Vim's default settings are loaded quietly without error messages. will restore cursor position
+" ensures that Vim's default settings are loaded quietly without error messages.
+" will restore cursor position
+silent! source $VIMRUNTIME/defaults.vim 
 
 filetype plugin on " enable loading of file type specific plugins and settings
 
 set history=1000 " command history, vim default is 50
 
-set viminfo='20,<1000,s1000 " persistant command history, search history, and registers across sessions
+" persistant marks across sessions
+" remember marks for this many of the last files accessed(max 10 000)
+set viminfo='1000
 
-set shortmess=aoOtTI " makes it avoid most of the 'Hit Enter ...' type messages
+" persistant command history(which includes search history) across sessions
+" keep a history of this many lines of command line input(max 10 000)
+set viminfo+=<1000
 
-set nofixendofline " stops vim from silently messing with files that it shouldn't
+" persistant registers across sessions
+" save up to this many characters of text from registers(max 1 000 000)
+set viminfo+=s1000000
 
-set wrapscan " search wraps from bottom of file back to the top
+" save and restore manually created folds across sessions
+set viewoptions=folds
 
-set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\│\· " ascii friendly invisible characters
+" makes it avoid most of the 'Hit Enter ...' type messages
+set shortmess=aoOtTI
+
+" stop vim from adding newline to the end of a file
+set nofixendofline
+
+" search wraps from bottom of file back to the top
+set wrapscan
+
+" ascii friendly invisible characters
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\│\·
 
 set list " turns on invisible characters
 
-set foldmethod=manual " turns off automatic folding
+set foldmethod=manual " manual folding
+"set foldmethod=syntax " automatic folds on syntax
+"set foldmethod=indent " folds on indents
+"set foldmethos= expr " folds on whatever expr is set with foldexpr
+"set foldmethod=marker " folds on user defined markers
 
-set nofoldenable " if some folds where folded this will open them
+set foldmarker={{{,}}} " set the fold markers to {{{ and }}}
+
+"set nofoldenable " if some folds where folded this will open them
+
+set foldcolumn=2
 
 set autoindent " automatically indent new lines
 
@@ -143,21 +176,23 @@ set softtabstop=4 " softtabstop,
 
 "set expandtab " Sets tabs to equivelent amount of spaces
 
-set shiftwidth=4 " sets shiftwidth width (when you are in normal mode press >> or << and it will indent or go back this many spaces)
+" sets shiftwidth width (when you are in normal mode press >> or << and it will indent or undent
+set shiftwidth=4
 
 set smartindent " Sets smart indenting
 
 "match IncSearch '\s\+$' " mark trailing spaces as errors
 
-"set textwidth=80 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
+set textwidth=100 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
 
-"set colorcolumn=+4 " Sets a colored column in the vim terminal
+set colorcolumn=100 " Sets a colored column in the vim terminal
 
 set timeout timeoutlen=2000 " set time out length in milliseconds(ie. for leaderkey timeout)
 
 "set spell " turn on default spell checking
 
-set spellcapcheck= " Disable checking for capitalization at the start of sentences during spell check
+" Disable checking for capitalization at the start of sentences during spell check
+set spellcapcheck=
 
 set ignorecase " ignore case during search
 
@@ -171,15 +206,19 @@ set directory^=$HOME/.vim/swapfiles// " store swapfiles in a custom location/dir
 
 set nowritebackup " Disable creating temporary backup files during file writes
 
-set icon " Sets the icon text for the Vim window (only affects gVim on X11 GUIs), might affect tmux titles
+" Sets the icon text for the Vim window (only affects gVim on X11 GUIs), might affect tmux titles
+set icon
 
-set scrolloff=8 " Keep at least 8 lines of context visible above and below the cursor while scrolling
+" Keep at least 8 lines of context visible above and below the cursor while scrolling
+set scrolloff=8
 
 set hlsearch " set highlight search hits
 
 "set incsearch " displays the match when your only partially through typing it
 
-"set linebreak " linebreak, if on wraps can occur at whatever breakat is
+set linebreak " linebreak wraps at work boundaries instead of mid word
+
+set showbreak=>>\  " shows >> at the begginning of wrapped lines
 
 "let g:loaded_matchparen=1 " turns bracket matching off
 
@@ -228,13 +267,21 @@ nnoremap <leader>o o<esc>k
 nnoremap \\ :nohlsearch<return>
 
 " ##############################################################################
-" AUTOCMD
+" AUTOCMD's
 
-" make autocomple curly brackets in c after function declaration
-autocmd FileType c,cpp inoremap <expr> <CR> getline('.') =~ '.*)$' ? "<CR>{<CR>}<Esc>O" : "<CR>"
+autocmd FileType c,cpp nnoremap <Leader>{ i{<CR>}<Esc>O
 
-" make autocomple curly brackets in c at start of line
-autocmd FileType c,cpp inoremap <expr>{ getline('.')[col('.') - 1] == '' ? '{<CR>}<Esc>O' : '{'
+augroup remember_folds
+	" clear and exist autocmds on the group, to avoid conflicts
+	autocmd!
+
+	" save folds and other view option/settings on buffer exit
+	autocmd BufWinLeave * mkview
+
+	" lead saved folds(and i assumed other options/settings) when entering a buffer
+	autocmd BufWinEnter * silent! loadview
+
+augroup end
 
 " ##############################################################################
 " end of vimrc

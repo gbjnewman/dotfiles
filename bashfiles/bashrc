@@ -119,11 +119,11 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias dotfiles='cd $HOME/repos/github/dotfiles/'
 alias scripts='cd $HOME/repos/github/scripts/'
-alias computer_enhance='cd ~/repos/github/computer-enhance'
 alias vimrc_edit='vim $HOME/repos/github/dotfiles/vimfiles/vim/vimrc'
 alias path='echo -e "${PATH//:/\\n}"' #make path more readable by adding newline inbetween directories
+alias cdcmur='cd /home/gtunt/repos/github/cmuratori-computer_enhance/perfaware/part1/'
+alias cdsim='cd /home/gtunt/repos/github/sim8086/'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
