@@ -41,14 +41,16 @@ esac
 
 # my custom prompt
 my_prompt=''
-my_prompt+="\[\033[38;5;6m\]--"
-my_prompt+="--\[\e[0m\] "
-my_prompt+="\[\033[38;5;2m\]\u:\[$(tput sgr0)\]"
-my_prompt+="\[\033[38;5;6m\]\w\[$(tput sgr0)\]"
-my_prompt+="\n"
+#my_prompt+="\[\033[38;5;6m\]--"
+#my_prompt+="--\[\e[0m\] "
+#my_prompt+="\[\033[38;5;2m\]\u@\[$(tput sgr0)\]"
+my_prompt+="\[\033[38;5;6m\]\u\[$(tput sgr0)\]"
+my_prompt+="\[\033[38;5;2m\][\h]\[$(tput sgr0)\]"
+my_prompt+="\[\033[38;5;6m\]: \w \[$(tput sgr0)\]"
 #my_prompt+="\[\033[38;5;197;1m\]\$ "
 my_prompt+="\[\033[38;5;197m\]"
 my_prompt+="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+my_prompt+="\n"
 my_prompt+="\[\033[38;5;6m\]\$ "
 my_prompt+="\[$(tput sgr0)\]" #end colors
 # export PS1=$my_prompt
@@ -135,11 +137,6 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-# start tmux session automatically
-if [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
 fi
 
 # #############################################################
