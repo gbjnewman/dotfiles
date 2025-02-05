@@ -47,12 +47,12 @@ my_prompt+="\u @"
 my_prompt+="\[$(tput sgr0)\]" #end color
 
 # ip address
-if [ -n "$SHH_TTY" ]; then
+if [ -n "$SSH_CONNECTION" ]; then
 	my_prompt+="\[\033[38;5;1m\]" # color (1 for red)
+	my_prompt+=" $(ip -4 addr show scope global | awk "/inet / {print \$2}" | cut -d/ -f1 | head -n 1)"
 else
 	my_prompt+="\[\033[38;5;2m\]" # color (2 for green)
 fi
-my_prompt+=" $(ip -4 addr show scope global | awk "/inet / {print \$2}" | cut -d/ -f1 | head -n 1)"
 #my_prompt+="\[$(tput sgr0)\]" #end color
 
 # hostname
