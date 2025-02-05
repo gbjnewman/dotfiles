@@ -47,7 +47,7 @@ my_prompt+="\u @"
 my_prompt+="\[$(tput sgr0)\]" #end color
 
 # ip address
-if [ ! -v "$SHH_TTY" ]; then
+if [ -n "$SHH_TTY" ]; then
 	my_prompt+="\[\033[38;5;1m\]" # color (1 for red)
 else
 	my_prompt+="\[\033[38;5;2m\]" # color (2 for green)
