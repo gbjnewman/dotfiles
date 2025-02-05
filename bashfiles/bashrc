@@ -47,15 +47,16 @@ if [ -n "$SSH_CONNECTION" ]; then
 
 # username
 	my_prompt+="\[\033[38;5;6m\]" # color (6 for light blue)
-	my_prompt+="\u @" # space in front of @
+	my_prompt+="\u @ " # space in front of @
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 # ip address
-	my_prompt+="\[\033[38;5;197m\]" # color (197 for pink)
-	my_prompt+=" $(ip -4 addr show scope global | awk "/inet / {print \$2}" | cut -d/ -f1 | head -n 1)"
+	my_prompt+="\[\033[4;38;5;197m\]" # color (197 for pink, the 4 at the begining is for underline)
+	my_prompt+="$(ip -4 addr show scope global | awk "/inet / {print \$2}" | cut -d/ -f1 | head -n 1)"
 
 # hostname
 	my_prompt+=" \h" # space before hostname
+	my_prompt+=" (ssh session)" # space before hostname
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 else
