@@ -41,24 +41,34 @@ esac
 
 # my custom prompt
 my_prompt=''
-#my_prompt+="\[\033[38;5;6m\]--"
-#my_prompt+="--\[\e[0m\] "
-#my_prompt+="\[\033[38;5;2m\]\u@\[$(tput sgr0)\]"
-my_prompt+="\[\033[38;5;6m\]\u\[$(tput sgr0)\]"
-my_prompt+="\[\033[38;5;2m\][\h]\[$(tput sgr0)\]"
-my_prompt+="\[\033[38;5;6m\]: \w \[$(tput sgr0)\]"
-#my_prompt+="\[\033[38;5;197;1m\]\$ "
+
+my_prompt+="\[\033[38;5;6m\]"
+my_prompt+="\u"
+#my_prompt+="\[$(tput sgr0)\]" #end color
+
+#my_prompt+="\[\033[38;5;2m\]"
+my_prompt+="@\h"
+my_prompt+="\[$(tput sgr0)\]" #end color
+
+my_prompt+="\[\033[38;5;2m\]"
+my_prompt+=":\w "
+my_prompt+="\[$(tput sgr0)\]" #end color
+
+#my_prompt+="\[\033[38;5;197;1m\]"
+my_prompt+="\$ "
+my_prompt+="\[$(tput sgr0)\]" #end color
+
 my_prompt+="\[\033[38;5;197m\]"
 my_prompt+="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
 my_prompt+="\n"
 my_prompt+="\[\033[38;5;6m\]\$ "
-my_prompt+="\[$(tput sgr0)\]" #end colors
+my_prompt+="\[$(tput sgr0)\]" #end color
 # export PS1=$my_prompt
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
