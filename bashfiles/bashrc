@@ -56,7 +56,7 @@ if [ -n "$SSH_CONNECTION" ]; then
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 # hostname
-	my_prompt+="\[\033[38;5;2m\]" # color (2 for green)
+	my_prompt+="\[\033[38;5;1m\]" # color (1 for red)
 	#my_prompt+="\[\033[38;5;1m\]" # color
 	my_prompt+=" \h" # space before hostname
 	my_prompt+="\[$(tput sgr0)\]" #end color
