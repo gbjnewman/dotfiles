@@ -27,7 +27,8 @@ call plug#end() " finalize plugin installation and loading
 " ##############################################################################
 " NERDTree settings
 
-let NERDTreeStatusline='NERDTree - Press ? for help' " set a text message in the status line
+" set a text message in the status line
+let NERDTreeStatusline='NERDTree - Press ? for help'
 
 " map l to open file or directory (same as enter)
 autocmd FileType nerdtree nmap <buffer> l <CR>
@@ -55,8 +56,8 @@ colorscheme molokai_gbjn
 
 " ##############################################################################
 " Custom Statusline
-
-set laststatus=2 " set statusline to always show, even if not more than one window open
+" set statusline to always show, even if not more than one window open
+set laststatus=2
 
 " dictionary to convert mode() output to something more readable
 let g:modedisplay={
@@ -169,7 +170,8 @@ set showmode " Shows current mode in tray
 
 set t_vb= " disable visual bell
 
-set smarttab " Make Tab key respect shiftwidth for indentation and tabstop elsewhere
+" Make Tab key respect shiftwidth for indentation and tabstop elsewhere
+set smarttab
 
 set tabstop=4 " sets the visual representation of tabwidth
 
@@ -177,40 +179,49 @@ set softtabstop=4 " softtabstop,
 
 "set expandtab " Sets tabs to equivelent amount of spaces
 
-" sets shiftwidth width (when you are in normal mode press >> or << and it will indent or undent
+" sets shiftwidth width (when you are in normal mode press >> or << and
+" it will indent or undent
 set shiftwidth=4
 
 set smartindent " Sets smart indenting
 
 "match IncSearch '\s\+$' " mark trailing spaces as errors
 
-set textwidth=100 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
+" Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
+set textwidth=80
 
-set colorcolumn=100 " Sets a colored column in the vim terminal
+set colorcolumn=80 " Sets a colored column in the vim terminal
 
-set timeout timeoutlen=2000 " set time out length in milliseconds(ie. for leaderkey timeout)
+" set time out length in milliseconds(ie. for leaderkey timeout)
+set timeout timeoutlen=2000
 
 "set spell " turn on default spell checking
 
-" Disable checking for capitalization at the start of sentences during spell check
+" Disable checking for capitalization at the start of sentences during spell
+" check
 set spellcapcheck=
 
 set ignorecase " ignore case during search
 
-set smartcase " if search query contains uppercase, vim will switch to case sensitive search
+" if search query contains uppercase, vim will switch to case sensitive search
+set smartcase
 
 set nobackup " Disable creating backup files (~ files) when saving
 
-"set noswapfile " Disable creating swap files (.swp), which disables crash recovery
+" Disable creating swap files (.swp), which disables crash recovery
+"set noswapfile
 
-set directory^=$HOME/.vim/swapfiles// " store swapfiles in a custom location/directory
+" store swapfiles in a custom location/directory
+set directory^=$HOME/.vim/swapfiles//
 
 set nowritebackup " Disable creating temporary backup files during file writes
 
-" Sets the icon text for the Vim window (only affects gVim on X11 GUIs), might affect tmux titles
+" Sets the icon text for the Vim window (only affects gVim on X11 GUIs),
+" might affect tmux titles
 set icon
 
-" Keep at least 8 lines of context visible above and below the cursor while scrolling
+" Keep at least 8 lines of context visible above and below the cursor while
+" scrolling
 set scrolloff=8
 
 set hlsearch " set highlight search hits
@@ -247,7 +258,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
-" map Y to act the same way as D and C (in that it does the action to the end of line)
+" map Y to act the same way as D and C (in that it does the action to the end
+" of line)
 nnoremap Y y$
 
 " map H to move to the beginning of the word
