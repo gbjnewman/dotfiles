@@ -39,53 +39,67 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# my custom prompt
+# CUSTOM PROMPT
 my_prompt=''
 
-if [ -n "$SSH_CONNECTION" ]; then
+# if SSH session
 # add ip address and change color to ip and hostname to red if connected to session via SSH
+if [ -n "$SSH_CONNECTION" ]; then
 
-# ssh session banner
-	my_prompt+="\[\033[4;38;5;197m\]" # color (197 for pink, the 4 at the begining is for underline)
+	# ssh session banner
+	my_prompt+="\[\033[4;38;5;197m\]" #color
 	my_prompt+="(ssh session)"
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
-# username
-	my_prompt+="\[\033[38;5;6m\]" # color (6 for light blue)
+	# username
+	my_prompt+="\[\033[38;5;7m\]" #color
 	my_prompt+=" \u@"
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
-# ip address
-	my_prompt+="\[\033[38;5;6m\]" # color (6 for light blue)
-	my_prompt+="$(ip -4 addr show scope global | awk "/inet / {print \$2}" | cut -d/ -f1 | head -n 1)"
+	# hostname
+	my_prompt+="\[\033[38;5;7m\]" #color
+	my_prompt+="\h"
+	my_prompt+="\[$(tput sgr0)\]" #end color
+
+	# ip address
+	my_prompt+="\[\033[38;5;7m\]" #color
+	my_prompt+=" ($(
+			ip -4 addr show scope global | 
+			awk "/inet / {print \$2}" | 
+			cut -d/ -f1 | 
+			head -n 1
+			))"
+	my_prompt+="\[$(tput sgr0)\]" #end color
+
+	# newline
+	my_prompt+="\n"
+
+	# working directory
+	my_prompt+="\[\033[38;5;6m\]" #color
+	my_prompt+="\w "
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 else
 
-# username
-	my_prompt+="\[\033[38;5;6m\]" # color (6 for light blue)
+	# username
+	my_prompt+="\[\033[38;5;6m\]" #color
 	my_prompt+="\u@" # no space in front of @
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
-# hostname
-	my_prompt+="\[\033[38;5;2m\]" # color (2 for green)
-	#my_prompt+="\[\033[38;5;1m\]" # color
-	my_prompt+="\h" # space before hostname
+	# hostname
+	my_prompt+="\[\033[38;5;2m\]" #color
+	my_prompt+="\h"
+	my_prompt+="\[$(tput sgr0)\]" #end color
+
+	# working directory
+	my_prompt+="\[\033[38;5;6m\]" #color
+	my_prompt+="\w "
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 fi
 
-
-# newline
-#my_prompt+="\n"
-
-# working directory
-my_prompt+="\[\033[38;5;6m\]" # color
-my_prompt+=" pwd:\w "
-my_prompt+="\[$(tput sgr0)\]" #end color
-
 # git branch
-my_prompt+="\[\033[38;5;197m\]" # color
+my_prompt+="\[\033[38;5;197m\]" #color
 my_prompt+="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') "
 my_prompt+="\[$(tput sgr0)\]" #end color
 
@@ -93,7 +107,7 @@ my_prompt+="\[$(tput sgr0)\]" #end color
 my_prompt+="\n"
 
 # prompty symbol
-my_prompt+="\[\033[38;5;6m\]" # color
+my_prompt+="\[\033[38;5;6m\]" #color
 my_prompt+="\$"
 my_prompt+="\[$(tput sgr0)\]" #end color
 
@@ -167,7 +181,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias scripts='cd $HOME/repos/github/scripts/'
 alias vimrc_edit='vim $HOME/repos/github/dotfiles/vimfiles/vim/vimrc'
-alias path='echo -e "${PATH//:/\\n}"' #make path more readable by adding newline inbetween directories
+alias path='echo -e "${PATH//:/\\n}"'
 alias cdcmur='cd $HOME/repos/github/cmuratori-computer_enhance/perfaware/part1/'
 alias cdsim='cd $HOME/repos/github/sim8086/'
 alias cddot='cd $HOME/repos/github/dotfiles/'
