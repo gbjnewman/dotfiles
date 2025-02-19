@@ -97,6 +97,27 @@ set statusline+=\line\ %l\  " add line number
 set statusline+=\:\ col\ %v " add column number
 
 " ##############################################################################
+" custom fold line
+function! MyFoldText()
+	" Number of dashes based on fold level
+    let nestedlevel = repeat('-', v:foldlevel)
+	" calculate how many lines in the fold
+    let numoflines = v:foldend - v:foldstart + 1
+	" get the text line on the first line of the fold
+    let comment = getline(v:foldstart)
+	" make this amount of dashes to add to the fold text line
+    let dashes = repeat('-', (70-len(nestedlevel)-len(numoflines)-len(comment)))
+
+    return '+'.nestedlevel.' '.numoflines.' lines:'.comment.' '.dashes
+endfunction
+
+" sets foldtext to my custom text
+set foldtext=MyFoldText()
+
+" sets the trailing fill after foldtext
+set fillchars=fold:\ 
+
+" ##############################################################################
 " misc settings
 
 set nocompatible " Sets vi compatible mode to off (just use nvi for vi mode)
@@ -190,7 +211,8 @@ set smartindent " Sets smart indenting
 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
 set textwidth=80
 
-set colorcolumn=80 " Sets a colored column in the vim terminal
+" Sets a colored column in the vim terminal(can have multiple separated by ,)
+set colorcolumn=81
 
 " set time out length in milliseconds(ie. for leaderkey timeout)
 set timeout timeoutlen=2000
