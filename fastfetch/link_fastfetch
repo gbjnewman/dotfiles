@@ -1,0 +1,3 @@
+#! /bin/bash
+
+ln -sf $PWD/config.jsonc $HOME/.config/fastfetch/config.jsonc
