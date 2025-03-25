@@ -176,7 +176,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias ll='ls -alF'
+alias lll='ls -alF'
+alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias scripts='cd $HOME/repos/github/scripts/'
