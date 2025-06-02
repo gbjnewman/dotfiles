@@ -93,7 +93,7 @@ else
 
 	# working directory
 	my_prompt+="\[\033[38;5;6m\]" #color
-	my_prompt+="\w "
+	my_prompt+=":\w "
 	my_prompt+="\[$(tput sgr0)\]" #end color
 
 fi
