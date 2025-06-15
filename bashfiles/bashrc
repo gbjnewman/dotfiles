@@ -8,15 +8,24 @@ case $- in
       *) return;;
 esac
 
-HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history.
+# add timestamps to bash history
+export HISTTIMEFORMAT="%F %T"
 
-shopt -s histappend # append to the history file, don't overwrite it
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# immediately sync shell history after each command
+PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-set -o vi # set vi mode
+# set vi mode
+set -o vi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
