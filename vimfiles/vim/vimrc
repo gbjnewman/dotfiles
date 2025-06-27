@@ -155,7 +155,7 @@ set nofixendofline
 set wrapscan
 
 " ascii friendly invisible characters
-set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\│\·
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\│\>
 
 set list " turns on invisible characters
 
