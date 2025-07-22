@@ -13,7 +13,3 @@ if command -v fastfetch 2>&1 >/dev/null; then
 	fastfetch
 fi
 
-# auto-start or reattach to tmux
-if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
-    tmux attach-session -t main || tmux new-session -s main
-fi

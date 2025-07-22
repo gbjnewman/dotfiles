@@ -49,78 +49,66 @@ case "$TERM" in
 esac
 
 # CUSTOM PROMPT
-my_prompt=''
+# Colors
+txtblk='\[\e[0;30m\]'
+txtred='\[\e[0;31m\]'
+txtgrn='\[\e[0;32m\]'
+txtylw='\[\e[0;33m\]'
+txtblu='\[\e[0;34m\]'
+txtpur='\[\e[0;35m\]'
+txtcyn='\[\e[0;36m\]'
+txtwht='\[\e[0;37m\]'
+bldblk='\[\e[1;30m\]'
+bldred='\[\e[1;31m\]'
+bldgrn='\[\e[1;32m\]'
+bldylw='\[\e[1;33m\]'
+bldblu='\[\e[1;34m\]'
+bldpur='\[\e[1;35m\]'
+bldcyn='\[\e[1;36m\]'
+bldwht='\[\e[1;37m\]'
+unkblk='\[\e[4;30m\]'
+undred='\[\e[4;31m\]'
+undgrn='\[\e[4;32m\]'
+undylw='\[\e[4;33m\]'
+undblu='\[\e[4;34m\]'
+undpur='\[\e[4;35m\]'
+undcyn='\[\e[4;36m\]'
+undwht='\[\e[4;37m\]'
+bakblk='\[\e[40m\]'
+bakred='\[\e[41m\]'
+badgrn='\[\e[42m\]'
+bakylw='\[\e[43m\]'
+bakblu='\[\e[44m\]'
+bakpur='\[\e[45m\]'
+bakcyn='\[\e[46m\]'
+bakwht='\[\e[47m\]'
+txtrst='\[\e[0m\]'
 
-# if SSH session
-# add ip address and change color to ip and hostname to red if connected to session via SSH
+# Start building prompt
+
+PROMPT_BEFORE="${txtcyn}\u@\h ${txtwht}\w${txtpur}"
+
+# If SSH session, prepend (ssh session) and IP in red
 if [ -n "$SSH_CONNECTION" ]; then
 
-	# ssh session banner
-	my_prompt+="\[\033[4;38;5;197m\]" #color
-	my_prompt+="(ssh session)"
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# username
-	my_prompt+="\[\033[38;5;7m\]" #color
-	my_prompt+=" \u@"
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# hostname
-	my_prompt+="\[\033[38;5;7m\]" #color
-	my_prompt+="\h"
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# ip address
-	my_prompt+="\[\033[38;5;7m\]" #color
-	my_prompt+=" ($(
-			ip -4 addr show scope global | 
-			awk "/inet / {print \$2}" | 
-			cut -d/ -f1 | 
-			head -n 1
-			))"
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# newline
-	my_prompt+="\n"
-
-	# working directory
-	my_prompt+="\[\033[38;5;6m\]" #color
-	my_prompt+="\w "
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-else
-
-	# username
-	my_prompt+="\[\033[38;5;6m\]" #color
-	my_prompt+="\u@" # no space in front of @
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# hostname
-	my_prompt+="\[\033[38;5;2m\]" #color
-	my_prompt+="\h"
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
-	# working directory
-	my_prompt+="\[\033[38;5;6m\]" #color
-	my_prompt+=":\w "
-	my_prompt+="\[$(tput sgr0)\]" #end color
-
+	ssh_ip=$(ip -4 addr show scope global | awk '/inet / {print $2}' | cut -d/ -f1 | head -n 1)
+	PROMPT_BEFORE="${txtred}(ssh session) ($ssh_ip) ${PROMPT_BEFORE}"
 fi
 
-# git branch
-my_prompt+="\[\033[38;5;197m\]" #color
-my_prompt+="\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') "
-my_prompt+="\[$(tput sgr0)\]" #end color
+# Newline + prompt symbol
+PROMPT_AFTER="${txtwht}\n\\$ "
 
-# newline
-my_prompt+="\n"
+# Git prompt features (read ~/.git-prompt.sh for reference)
+export GIT_PS1_SHOWDIRTYSTATE="true"
+#export GIT_PS1_SHOWSTASHSTATE="true"
+export GIT_PS1_SHOWUNTRACKEDFILES="true"
+#export GIT_PS1_SHOWUPSTREAM="auto"
+#export GIT_PS1_SHOWCOLORHINTS="true"
 
-# prompty symbol
-my_prompt+="\[\033[38;5;6m\]" #color
-my_prompt+="\$"
-my_prompt+="\[$(tput sgr0)\]" #end color
-
-# export PS1=$my_prompt
+# Load Git prompt helper if it exists
+if [ -f "/c/Program Files/Git/mingw64/share/git/completion/git-prompt.sh" ]; then
+    source "/c/Program Files/Git/mingw64/share/git/completion/git-prompt.sh"
+fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -139,8 +127,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-#   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1=$my_prompt
+   #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   PS1=''
+
+   # Git-aware prompt
+   PROMPT_COMMAND='__git_ps1 "$PROMPT_BEFORE" "$PROMPT_AFTER"'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -156,7 +147,7 @@ xterm*|rxvt*)
 esac
 
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls and also add handy 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
