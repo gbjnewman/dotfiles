@@ -38,7 +38,7 @@ autocmd FileType nerdtree nmap <buffer> h :NERDTreeUp<CR>
 
 " this sets so vim exits if NERDTree is the only window/tab remaining open
 autocmd BufEnter *
-	\ if tabpagenr('$') == 1 
+	\ if tabpagenr('$') == 1
 	\ && winnr('$') == 1
 	\ && exists('b:NERDTree')
 	\ && b:NERDTree.isTabTree()
@@ -52,7 +52,7 @@ autocmd BufEnter *
 "set termguicolors " turns on 24 bit colors
 set t_Co=256 " deprecated way of telling vim to use 256 colors
 set background=dark
-colorscheme molokai_gbjn
+"colorscheme molokai_gbjn
 
 " ##############################################################################
 " Custom Statusline
@@ -294,6 +294,7 @@ nnoremap L w
 " can toggle on and off
 map <F1> :set number!<CR>
 map <F2> :set relativenumber!<CR>
+map <F3> :set list!<CR>
 
 " add line after without going into insert mode
 nnoremap <leader>o o<esc>k
