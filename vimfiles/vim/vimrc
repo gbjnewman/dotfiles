@@ -52,7 +52,7 @@ autocmd BufEnter *
 "set termguicolors " turns on 24 bit colors
 set t_Co=256 " deprecated way of telling vim to use 256 colors
 set background=dark
-"colorscheme molokai_gbjn
+colorscheme habamax
 
 " ##############################################################################
 " Custom Statusline
@@ -209,10 +209,10 @@ set smartindent " Sets smart indenting
 "match IncSearch '\s\+$' " mark trailing spaces as errors
 
 " Sets how wide inserted text can be (ie when horizontal lines will be wrapped)
-set textwidth=80
+set textwidth=130
 
 " Sets a colored column in the vim terminal(can have multiple separated by ,)
-set colorcolumn=81
+set colorcolumn=130
 
 " set time out length in milliseconds(ie. for leaderkey timeout)
 set timeout timeoutlen=2000

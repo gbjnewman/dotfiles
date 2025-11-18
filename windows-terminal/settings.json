@@ -1,0 +1,104 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema-preview",
+    "actions": [],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{b0e1636b-ced4-4461-8d60-4d557e268d9d}",
+    "keybindings": 
+    [
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": {},
+        "list": 
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{064aa83c-79af-5876-a0a5-9e4e303206fb}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{27f37c6c-9553-57c7-a164-67499d395963}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "closeOnExit": "automatic",
+                "colorScheme": "Campbell",
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login -i",
+                "cursorColor": "#13A10E",
+                "cursorShape": "filledBox",
+                "font": 
+                {
+                    "face": "Cascadia Mono",
+                    "size": 12
+                },
+                "guid": "{b0e1636b-ced4-4461-8d60-4d557e268d9d}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "gitbash",
+                "padding": "8, 8, 8, 8",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
+            },
+            {
+                "commandline": "wt -w 0 nt -p \"gitbash\" --startingDirectory \"C:\\Users\\bjame\\repos\\github\\handmade-hero\\source_code\" ; split-pane -V -p \"Command Prompt\" --startingDirectory \"C:\\Users\\bjame\\repos\\github\\handmade-hero\\source_code\" ",
+                "guid": "{9c1efb20-b808-4fe3-b3cd-123456789abc}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{profile icon path}",
+                "name": "Handmade Split: Git Bash + CMD"
+            },
+            {
+                "commandline": "wt -w 0 nt -p \"gitbash\" --startingDirectory \"C:\\Users\\bjame\\repos\\github\" ; split-pane -V -p \"Command Prompt\" --startingDirectory \"C:\\Users\\bjame\\repos\\github\" cmd.exe /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\" ",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{profile icon path}",
+                "name": "Git Bash + CMD"
+            }
+        ]
+    },
+    "schemes": [],
+    "themes": []
+}
