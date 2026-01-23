@@ -6,4 +6,7 @@ working_directory = "C:\\Users\\bjame\\repos\\github"
 [terminal.shell] 
 #program = "C:\\Program Files\\Git\\bin\\bash.exe"
 program = "cmd.exe"
-args =  ["/k", '"C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"']
+args =  [
+    "/k", 
+    "C:\\Users\\bjame\\repos\\github\\dotfiles\\cmd\\bat\\cmdsetup.bat"
+    ]
