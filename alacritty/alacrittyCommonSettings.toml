@@ -1,0 +1,24 @@
+[general]
+import = ["themes/monokai_pro.toml"]
+
+#[terminal]
+
+[window]
+opacity = 0.9
+blur = true
+startup_mode = "Maximized"
+
+[scrolling]
+history = 10000
+
+[font]
+size = 14
+
+[colors.primary]
+#foreground = "#feca63"
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = {shape = "Block", blinking = "Always"}
