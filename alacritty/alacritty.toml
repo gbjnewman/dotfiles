@@ -1,8 +1,13 @@
 [general]
-working_directory = "C:\\Users\\bjame"
+working_directory = "C:\\Users\\bjame\\repos\\github"
 
-[terminal]
-shell = "C:\\Program Files\\Git\\bin\\bash.exe"
+#[terminal]
+#shell = "C:\\Program Files\\Git\\bin\\bash.exe"
+#shell = {program = "cmd.exe", args =  ["/k", "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"]}
+
+[terminal.shell] 
+program = "cmd.exe"
+args =  ["/k", '"C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"']
 
 [font]
 size = 14
