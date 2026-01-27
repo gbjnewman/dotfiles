@@ -7,7 +7,8 @@ doskey nvim=call "%nvimbat%" $*
 doskey vim=call "%nvimbat%" $*
 doskey vi=call "%nvimbat%" $*
 
-doskey ls=dir $*
-doskey ll=dir $*
+doskey ls=eza $*
+doskey ll=eza -lah $*
 doskey clear=cls
 doskey alias=doskey /macros
+doskey rm=del $*
