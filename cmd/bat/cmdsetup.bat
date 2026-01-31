@@ -1,3 +1,4 @@
 @echo off
-set "PATH=C:\\Users\\bjame\\repos\\github\\dotfiles\\cmd\\bat;%PATH%"
-call "C:\Users\bjame\repos\github\dotfiles\cmd\bat\alias.bat"
+::set "PATH=%USERPROFILE%\\repos\\github\\dotfiles\\cmd\\bat;%PATH%"
+set "PATH=%USERPROFILE%\\repos\\github\\dotfiles\\bin;%PATH%"
+call "%USERPROFILE%\repos\github\dotfiles\cmd\bat\alias.bat"

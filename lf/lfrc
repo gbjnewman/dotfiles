@@ -1,1 +1,6 @@
 map e $nvim %f%
+
+cmd on-quit &{{
+	Printf "$PWD"
+
+}}

@@ -1,5 +1,6 @@
 [general]
-import = ["themes/monokai_pro.toml"]
+#import = ["themes/monokai_pro.toml"]
+import = ["themes/tokyonight_night.toml"]
 
 #[terminal]
 

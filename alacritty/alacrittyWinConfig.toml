@@ -4,7 +4,7 @@ import = ["alacrittyCommonSettings.toml"]
 working_directory = "C:\\Users\\bjame\\repos\\github"
 
 [env]
-XDG_CONFIG_HOME="C:\\Users\\bjame\\repos\\github\\dotfiles"
+#XDG_CONFIG_HOME="C:\\Users\\bjame\\repos\\github\\dotfiles"
 
 [terminal.shell] 
 #program = "C:\\Program Files\\Git\\bin\\bash.exe"

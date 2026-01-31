@@ -1,11 +1,11 @@
 @echo off
 
-if not defined nvimbat (
-  set "nvimbat=%USERPROFILE%\repos\github\dotfiles\neovim\nvimWindows.bat"
+if not defined lfbat (
+  set "lfbat=%USERPROFILE%\repos\github\dotfiles\lf\lfcd.bat"
 )
-doskey nvim=call "%nvimbat%" $*
-doskey vim=call "%nvimbat%" $*
-doskey vi=call "%nvimbat%" $*
+doskey lf=call "%lfbat%" $*
+
+doskey vc=call "%USERPROFILE%\repos\github\dotfiles\cmd\bat\vcvars.bat"
 
 doskey ls=eza $*
 doskey ll=eza -lah $*
