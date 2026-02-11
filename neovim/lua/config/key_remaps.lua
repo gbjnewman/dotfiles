@@ -23,8 +23,12 @@ vim.keymap.set("n", "L", "w")
 
 -- function key maps
 vim.keymap.set("n", "<F1>", ":set number!<CR>")
-vim.keymap.set("n", "<F2>", ":set relativenumber!<CR>")
-vim.keymap.set("n", "<F3>", ":set list!<CR>")
+vim.keymap.set("n", "<F2>", ":set list!<CR>")
+vim.keymap.set("n", "<F3>", ":syntax enable<CR>")
+vim.keymap.set("n", "<S-F3>", ":syntax off<CR>")
 
 -- turn of search highlighting
-vim.keymap.set("n", "<BS><BS>", ":nohlsearch<return>")
+vim.keymap.set("n", "<BS><BS>", ":nohlsearch<CR>")
+
+-- turn off comment continuation
+vim.keymap.set("n", "<F4>", ":set formatoptions-=ro<CR>")
