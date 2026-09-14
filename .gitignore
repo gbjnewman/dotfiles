@@ -1,3 +1,5 @@
-# ignore vim/plugged folder
-vimfiles/vim/plugged/*
-vimfiles/vim/view/
+# vim generated state
+vim/.vim/plugged/
+vim/.vim/view/
+vim/.vim/.netrwhist
+vim/.vim/*.bak
