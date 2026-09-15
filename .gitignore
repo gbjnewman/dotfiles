@@ -3,3 +3,14 @@ vim/.vim/plugged/
 vim/.vim/view/
 vim/.vim/.netrwhist
 vim/.vim/*.bak
+
+# Newsboat generated state
+newsboat/.newsboat/cache.db
+newsboat/.newsboat/queue
+newsboat/.newsboat/history.search
+newsboat/.newsboat/history.cmdline
+
+# aerc local/generated configuration
+aerc/.config/aerc/accounts.conf
+aerc/.config/aerc/aerc.conf
+aerc/.config/aerc/binds.conf

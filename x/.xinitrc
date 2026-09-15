@@ -6,4 +6,6 @@ xrandr --output DP-1 --primary --mode 2560x1440 --pos 0x360 --output DP-3 --mode
 export XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 
+. /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
 exec /usr/local/bin/dwm

@@ -1,0 +1,9 @@
+[Proton]
+source = imap+insecure://<BRIDGE_USERNAME_URL_ENCODED>@127.0.0.1:1143
+source-cred-cmd = pass mail/proton/bridge
+
+outgoing = smtp+insecure://<BRIDGE_USERNAME_URL_ENCODED>@127.0.0.1:1025
+outgoing-cred-cmd = pass mail/proton/bridge
+
+from = <EMAIL>
+default = INBOX

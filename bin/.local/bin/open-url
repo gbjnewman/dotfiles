@@ -1,0 +1,13 @@
+#!/bin/bash
+
+url="$1"
+
+case "$url" in
+    *youtube.com*|*youtu.be*)
+        exec mpv "$url"
+        ;;
+
+    *)
+        exec firefox "$url"
+        ;;
+esac
