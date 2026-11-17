@@ -1,6 +1,7 @@
 # vim generated state
 vim/.vim/plugged/
 vim/.vim/view/
+vim/.vim/swapfiles/
 vim/.vim/.netrwhist
 vim/.vim/*.bak
 
