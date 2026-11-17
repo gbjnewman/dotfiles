@@ -1,7 +1,8 @@
 " ##############################################################################
 " Vim 9.2 options
 "
-" Each option below is reset to its Vim default with &vim.
+" Each supported option below is reset to its Vim default with &vim.
+" Options not implemented by the running editor are skipped.
 " The personal settings at the end of this file override those defaults.
 "
 " 455 documented options in the current Vim options reference.
