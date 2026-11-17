@@ -1,0 +1,642 @@
+" ##############################################################################
+" Vim 9.2 options
+"
+" Each option below is reset to its Vim default with &vim.
+" The personal settings at the end of this file override those defaults.
+"
+" 455 documented options in the current Vim options reference.
+" Terminal capability codes (t_...) are separate and terminal-dependent.
+" ##############################################################################
+
+" Vim-compatible behaviour is disabled, as in the existing vimrc.
+set nocompatible
+
+" ##############################################################################
+" OPTIONS
+" ##############################################################################
+
+" A
+set aleph&vim    "ASCII code of the letter Aleph (Hebrew)
+set allowrevins&vim    "allow CTRL-_ in Insert and Command-line mode
+set altkeymap&vim    "obsolete option for Farsi
+set ambiwidth&vim    "what to do with Unicode chars of ambiguous width
+set antialias&vim    "Mac OS X: use smooth, antialiased fonts
+set arabic&vim    "for Arabic as a default second language
+set arabicshape&vim    "do shaping for Arabic characters
+set autochdir&vim    "change directory to the file in the current window
+set autocomplete&vim    "enable automatic completion in insert mode
+set autocompletedelay&vim    "delay in msec before menu appears after typing
+set autocompletetimeout&vim    "initial decay timeout for autocompletion algorithm
+set autoindent&vim    "take indent for new line from previous line
+set autoread&vim    "autom. read file when changed outside of Vim
+set autoshelldir&vim    "change directory to the shell's current directory
+set autowrite&vim    "automatically write file if changed
+set autowriteall&vim    "as 'autowrite', but works with more commands
+" B
+set background&vim    ""dark" or "light", used for highlight colors
+set backspace&vim    "how backspace works at start of line
+set backup&vim    "keep backup file after overwriting a file
+set backupcopy&vim    "make backup as a copy, don't rename the file
+set backupdir&vim    "list of directories for the backup file
+set backupext&vim    "extension used for the backup file
+set backupskip&vim    "no backup for files that match these patterns
+set balloondelay&vim    "delay in mS before a balloon may pop up
+set ballooneval&vim    "switch on balloon evaluation in the GUI
+set balloonevalterm&vim    "switch on balloon evaluation in the terminal
+set balloonexpr&vim    "expression to show in balloon
+set belloff&vim    "do not ring the bell for these reasons
+set binary&vim    "read/write/edit file in binary mode
+set bioskey&vim    "MS-DOS: use bios calls for input characters
+set bomb&vim    "prepend a Byte Order Mark to the file
+set breakat&vim    "characters that may cause a line break
+set breakindent&vim    "wrapped line repeats indent
+set breakindentopt&vim    "settings for 'breakindent'
+set browsedir&vim    "which directory to start browsing in
+set bufhidden&vim    "what to do when buffer is no longer in window
+set buflisted&vim    "whether the buffer shows up in the buffer list
+set buftype&vim    "special type of buffer
+" C
+set casemap&vim    "specifies how case of letters is changed
+set cdhome&vim    "change directory to the home directory by ":cd"
+set cdpath&vim    "list of directories searched with ":cd"
+set cedit&vim    "key used to open the command-line window
+set charconvert&vim    "expression for character encoding conversion
+set chistory&vim    "maximum number of quickfix lists in history
+set cindent&vim    "do C program indenting
+set cinkeys&vim    "keys that trigger indent when 'cindent' is set
+set cinoptions&vim    "how to do indenting when 'cindent' is set
+set cinscopedecls&vim    "words that are recognized by 'cino-g'
+set cinwords&vim    "words where 'si' and 'cin' add an indent
+set clipboard&vim    "use the clipboard as the unnamed register
+set clipmethod&vim    "specify order of what clipboard methods to use
+set cmdheight&vim    "number of lines to use for the command-line
+set cmdwinheight&vim    "height of the command-line window
+set colorcolumn&vim    "columns to highlight
+" set columns&vim    number of columns in the display (left to Vim or the terminal at startup)
+set comments&vim    "patterns that can start a comment line
+set commentstring&vim    "template for comments; used for fold marker
+set complete&vim    "specify how Insert mode completion works
+set completefunc&vim    "function to be used for Insert mode completion
+set completefuzzycollect&vim    "deprecated option; no longer used
+set completeitemalign&vim    "alignment and display order of completion items
+set completeopt&vim    "options for Insert mode completion
+set completepopup&vim    "options for the Insert mode completion info popup
+set completeslash&vim    "like 'shellslash' for completion
+set completetimeout&vim    "initial decay timeout for CTRL-N and CTRL-P
+set concealcursor&vim    "whether concealable text is hidden in cursor line
+set conceallevel&vim    "whether concealable text is shown or hidden
+set confirm&vim    "ask what to do about unsaved/read-only files
+set conskey&vim    "get keys directly from console (MS-DOS only)
+set copyindent&vim    "make 'autoindent' use existing indent structure
+set cpoptions&vim    "flags for Vi-compatible behavior
+" set cryptmethod&vim    type of encryption to use for file writing (left to Vim or the terminal at startup)
+set cscopepathcomp&vim    "how many components of the path to show
+set cscopeprg&vim    "command to execute cscope
+set cscopequickfix&vim    "use quickfix window for cscope results
+set cscoperelative&vim    "Use cscope.out path basename as prefix
+set cscopetag&vim    "use cscope for tag commands
+set cscopetagorder&vim    "determines ":cstag" search order
+set cscopeverbose&vim    "give messages when adding a cscope database
+set cursorbind&vim    "move cursor in window as it moves in other windows
+set cursorcolumn&vim    "highlight the screen column of the cursor
+set cursorline&vim    "highlight the screen line of the cursor
+set cursorlineopt&vim    "settings for 'cursorline'
+" D
+set debug&vim    "set to "msg" to see all error messages
+set define&vim    "pattern to be used to find a macro definition
+set delcombine&vim    "delete combining characters on their own
+set dictionary&vim    "list of file names used for keyword completion
+set diff&vim    "use diff mode for the current window
+set diffanchors&vim    "list of {address} to force anchoring of a diff
+set diffexpr&vim    "expression used to obtain a diff file
+set diffopt&vim    "options for using diff mode
+set digraph&vim    "enable the entering of digraphs in Insert mode
+set directory&vim    "list of directory names for the swap file
+set display&vim    "list of flags for how to display text
+" E
+set eadirection&vim    "in which direction 'equalalways' works
+set edcompatible&vim    "toggle flags of ":substitute" command
+set emoji&vim    "emoji characters are considered full width
+" set encoding&vim    encoding used internally (left to Vim or the terminal at startup)
+set endoffile&vim    "write CTRL-Z at end of the file
+set endofline&vim    "write <EOL> for last line in file
+set equalalways&vim    "windows are automatically made the same size
+set equalprg&vim    "external program to use for "=" command
+set errorbells&vim    "ring the bell for error messages
+set errorfile&vim    "name of the errorfile for the QuickFix mode
+set errorformat&vim    "description of the lines in the error file
+set esckeys&vim    "recognize function keys in Insert mode
+set eventignore&vim    "autocommand events that are ignored
+set eventignorewin&vim    "autocommand events that are ignored in a window
+set expandtab&vim    "use spaces when <Tab> is inserted
+set exrc&vim    "read .vimrc and .exrc in the current directory
+" F
+set fileencoding&vim    "file encoding for multibyte text
+set fileencodings&vim    "automatically detected character encodings
+set fileformat&vim    "file format used for file I/O
+set fileformats&vim    "automatically detected values for 'fileformat'
+set fileignorecase&vim    "ignore case when using file names
+set filetype&vim    "type of file, used for autocommands
+set fillchars&vim    "characters to use for displaying special items
+set findfunc&vim    "function to be called for the |:find| command
+set fixendofline&vim    "make sure last line in file has <EOL>
+set fkmap&vim    "obsolete option for Farsi
+set foldclose&vim    "close a fold when the cursor leaves it
+set foldcolumn&vim    "width of the column used to indicate folds
+set foldenable&vim    "set to display all folds open
+set foldexpr&vim    "expression used when 'foldmethod' is "expr"
+set foldignore&vim    "ignore lines when 'foldmethod' is "indent"
+set foldlevel&vim    "close folds with a level higher than this
+set foldlevelstart&vim    "'foldlevel' when starting to edit a file
+set foldmarker&vim    "markers used when 'foldmethod' is "marker"
+set foldmethod&vim    "folding type
+set foldminlines&vim    "minimum number of lines for a fold to be closed
+set foldnestmax&vim    "maximum fold depth
+set foldopen&vim    "for which commands a fold will be opened
+set foldtext&vim    "expression used to display for a closed fold
+set formatexpr&vim    "expression used with "gq" command
+set formatlistpat&vim    "pattern used to recognize a list header
+set formatoptions&vim    "how automatic formatting is to be done
+set formatprg&vim    "name of external program used with "gq" command
+set fsync&vim    "whether to invoke fsync() after file write
+" G
+set gdefault&vim    "the ":substitute" flag 'g' is default on
+set grepformat&vim    "format of 'grepprg' output
+set grepprg&vim    "program to use for ":grep"
+set guicursor&vim    "GUI: settings for cursor shape and blinking
+set guifont&vim    "GUI: Name(s) of font(s) to be used
+set guifontset&vim    "GUI: Names of multibyte fonts to be used
+set guifontwide&vim    "list of font names for double-wide characters
+set guiheadroom&vim    "GUI: pixels room for window decorations
+set guiligatures&vim    "GTK GUI: ASCII characters that can form shapes
+set guioptions&vim    "GUI: Which components and options are used
+set guipty&vim    "GUI: try to use a pseudo-tty for ":!" commands
+set guitablabel&vim    "GUI: custom label for a tab page
+set guitabtooltip&vim    "GUI: custom tooltip for a tab page
+" H
+set helpfile&vim    "full path name of the main help file
+set helpheight&vim    "minimum height of a new help window
+set helplang&vim    "preferred help languages
+set hidden&vim    "don't unload buffer when it is |abandon|ed
+set highlight&vim    "sets highlighting mode for various occasions
+set history&vim    "number of command-lines that are remembered
+set hkmap&vim    "Hebrew keyboard mapping
+set hkmapp&vim    "phonetic Hebrew keyboard mapping
+set hlsearch&vim    "highlight matches with last search pattern
+" I
+set icon&vim    "let Vim set the text of the window icon
+set iconstring&vim    "string to use for the Vim icon text
+set ignorecase&vim    "ignore case in search patterns
+set imactivatefunc&vim    "function to enable/disable the X input method
+set imactivatekey&vim    "key that activates the X input method
+set imageprotocol&vim    "image backend to use for what terminal
+set imcmdline&vim    "use IM when starting to edit a command line
+set imdisable&vim    "do not use the IM in any mode
+set iminsert&vim    "use :lmap or IM in Insert mode
+set imsearch&vim    "use :lmap or IM when typing a search pattern
+set imstatusfunc&vim    "function to obtain X input method status
+set imstyle&vim    "specifies the input style of the input method
+set include&vim    "pattern to be used to find an include file
+set includeexpr&vim    "expression used to process an include line
+set incsearch&vim    "highlight match while typing search pattern
+set indentexpr&vim    "expression used to obtain the indent of a line
+set indentkeys&vim    "keys that trigger indenting with 'indentexpr'
+set infercase&vim    "adjust case of match for keyword completion
+set insertmode&vim    "start the edit of a file in Insert mode
+set isfname&vim    "characters included in file names and pathnames
+set isident&vim    "characters included in identifiers
+set iskeyword&vim    "characters included in keywords
+set isprint&vim    "printable characters
+" J
+set joinspaces&vim    "two spaces after a period with a join command
+set jumpoptions&vim    "specifies how jumping is done
+" K
+" set key&vim    encryption key (left to Vim or the terminal at startup)
+set keymap&vim    "name of a keyboard mapping
+set keymodel&vim    "enable starting/stopping selection with keys
+set keyprotocol&vim    "what keyboard protocol to use for what terminal
+set keywordprg&vim    "program to use for the "K" command
+" L
+set langmap&vim    "alphabetic characters for other language mode
+set langmenu&vim    "language to be used for the menus
+set langnoremap&vim    "do not apply 'langmap' to mapped characters
+set langremap&vim    "do apply 'langmap' to mapped characters
+set laststatus&vim    "tells when last window has status lines
+set lazyredraw&vim    "don't redraw while executing macros
+set lhistory&vim    "maximum number of location lists in history
+set linebreak&vim    "wrap long lines at a blank
+" set lines&vim    number of lines in the display (left to Vim or the terminal at startup)
+set linespace&vim    "number of pixel lines to use between characters
+set lisp&vim    "automatic indenting for Lisp
+set lispoptions&vim    "changes how Lisp indenting is done
+set lispwords&vim    "words that change how lisp indenting works
+set list&vim    "show <Tab> and <EOL>
+set listchars&vim    "characters for displaying in list mode
+set loadplugins&vim    "load plugin scripts when starting up
+set luadll&vim    "name of the Lua dynamic library
+" M
+set macatsui&vim    "Mac GUI: use ATSUI text drawing
+set magic&vim    "changes special characters in search patterns
+set makeef&vim    "name of the errorfile for ":make"
+set makeencoding&vim    "encoding of external make/grep commands
+set makeprg&vim    "program to use for the ":make" command
+set matchpairs&vim    "pairs of characters that "%" can match
+set matchtime&vim    "tenths of a second to show matching paren
+set maxcombine&vim    "maximum nr of combining characters displayed
+set maxfuncdepth&vim    "maximum recursive depth for user functions
+set maxmapdepth&vim    "maximum recursive depth for mapping
+set maxmem&vim    "maximum memory (in Kbyte) used for one buffer
+set maxmempattern&vim    "maximum memory (in Kbyte) used for pattern search
+set maxmemtot&vim    "maximum memory (in Kbyte) used for all buffers
+set maxsearchcount&vim    "maximum number of matches shown for the search count
+set menuitems&vim    "maximum number of items in a menu
+set messagesopt&vim    "settings for outputting messages
+set mkspellmem&vim    "memory used before |:mkspell| compresses the tree
+set modeline&vim    "recognize modelines at start or end of file
+set modelineexpr&vim    "allow setting expression options from a modeline
+set modelines&vim    "number of lines checked for modelines
+set modelinestrict&vim    "only allow safe options in modelines
+set modifiable&vim    "changes to the text are not possible
+set modified&vim    "buffer has been modified
+set more&vim    "pause listings when the whole screen is filled
+set mouse&vim    "enable the use of mouse clicks
+set mousefocus&vim    "keyboard focus follows the mouse
+set mousehide&vim    "hide mouse pointer while typing
+set mousemodel&vim    "changes meaning of mouse buttons
+set mousemoveevent&vim    "report mouse moves with <MouseMove>
+set mouseshape&vim    "shape of the mouse pointer in different modes
+set mousetime&vim    "max time between mouse double-click
+set mzquantum&vim    "the interval between polls for MzScheme threads
+set mzschemedll&vim    "name of the MzScheme dynamic library
+set mzschemegcdll&vim    "name of the MzScheme dynamic library for GC
+" N
+set nrformats&vim    "number formats recognized for CTRL-A command
+set number&vim    "print the line number in front of each line
+set numberwidth&vim    "number of columns used for the line number
+" O
+set omnifunc&vim    "function for filetype-specific completion
+set opendevice&vim    "allow reading/writing devices on MS-Windows
+set operatorfunc&vim    "function to be called for |g@| operator
+set osctimeoutlen&vim    "timeout for receiving an OSC response from the terminal
+set osfiletype&vim    "no longer supported
+" P
+set packpath&vim    "list of directories used for packages
+set paragraphs&vim    "nroff macros that separate paragraphs
+set paste&vim    "allow pasting text
+set pastetoggle&vim    "key code that causes 'paste' to toggle
+set patchexpr&vim    "expression used to patch a file
+set patchmode&vim    "keep the oldest version of a file
+set path&vim    "list of directories searched with "gf" et.al.
+set perldll&vim    "name of the Perl dynamic library
+set preserveindent&vim    "preserve the indent structure when reindenting
+set previewheight&vim    "height of the preview window
+set previewpopup&vim    "use popup window for preview
+set previewwindow&vim    "identifies the preview window
+set printdevice&vim    "name of the printer to be used for :hardcopy
+set printencoding&vim    "encoding to be used for printing
+set printexpr&vim    "expression used to print PostScript for :hardcopy
+set printfont&vim    "name of the font to be used for :hardcopy
+set printheader&vim    "format of the header used for :hardcopy
+set printmbcharset&vim    "CJK character set to be used for :hardcopy
+set printmbfont&vim    "font names to be used for CJK output of :hardcopy
+set printoptions&vim    "controls the format of :hardcopy output
+set prompt&vim    "enable prompt in Ex mode
+set pumborder&vim    "border and decorations for the completion popup menu
+set pumheight&vim    "maximum height of the popup menu
+set pummaxwidth&vim    "maximum width of the completion popup menu
+set pumopt&vim    "additional options for the popup menu
+set pumwidth&vim    "minimum width of the popup menu
+set pythondll&vim    "name of the Python 2 dynamic library
+set pythonhome&vim    "name of the Python 2 home directory
+set pythonthreedll&vim    "name of the Python 3 dynamic library
+set pythonthreehome&vim    "name of the Python 3 home directory
+set pyxversion&vim    "Python version used for pyx* commands
+" Q
+set quickfixtextfunc&vim    "function for the text in the quickfix window
+set quoteescape&vim    "escape characters used in a string
+" R
+set readonly&vim    "disallow writing the buffer
+set redrawtime&vim    "timeout for 'hlsearch' and |:match| highlighting
+set regexpengine&vim    "default regexp engine to use
+set relativenumber&vim    "show relative line number in front of each line
+set remap&vim    "allow mappings to work recursively
+set renderoptions&vim    "options for text rendering on Windows
+set report&vim    "threshold for reporting nr. of lines changed
+set restorescreen&vim    "Win32: restore screen when exiting
+set revins&vim    "inserting characters will work backwards
+set rightleft&vim    "window is right-to-left oriented
+set rightleftcmd&vim    "commands for which editing works right-to-left
+set rubydll&vim    "name of the Ruby dynamic library
+set ruler&vim    "show cursor line and column in the status line
+set rulerformat&vim    "custom format for the ruler
+set runtimepath&vim    "list of directories used for runtime files
+" S
+set scroll&vim    "lines to scroll with CTRL-U and CTRL-D
+set scrollbind&vim    "scroll in window as other windows scroll
+set scrollfocus&vim    "scroll wheel applies to window under pointer
+set scrolljump&vim    "minimum number of lines to scroll
+set scrolloff&vim    "minimum nr. of lines above and below cursor
+set scrolloffpad&vim    "vertically center cursor at end of file
+set scrollopt&vim    "how 'scrollbind' should behave
+set sections&vim    "nroff macros that separate sections
+set secure&vim    "secure mode for reading .vimrc in current dir
+set selection&vim    "what type of selection to use
+set selectmode&vim    "when to use Select mode instead of Visual mode
+set sessionoptions&vim    "options for |:mksession|
+set shell&vim    "name of shell to use for external commands
+set shellcmdflag&vim    "flag to shell to execute one command
+set shellpipe&vim    "string to put output of ":make" in error file
+set shellquote&vim    "quote character(s) for around shell command
+set shellredir&vim    "string to put output of filter in a temp file
+set shellslash&vim    "use forward slash for shell file names
+set shelltemp&vim    "whether to use a temp file for shell commands
+set shelltype&vim    "Amiga: influences how to use a shell
+set shellxescape&vim    "characters to escape when 'shellxquote' is (
+set shellxquote&vim    "like 'shellquote', but include redirection
+set shiftround&vim    "round indent to multiple of shiftwidth
+set shiftwidth&vim    "number of spaces to use for (auto)indent step
+set shortmess&vim    "list of flags, reduce length of messages
+set shortname&vim    "Filenames assumed to be 8.3 chars
+set showbreak&vim    "string to use at the start of wrapped lines
+set showcmd&vim    "show (partial) command somewhere
+set showcmdloc&vim    "where to show (partial) command
+set showfulltag&vim    "show full tag pattern when completing tag
+set showmatch&vim    "briefly jump to matching bracket if insert one
+set showmode&vim    "message on status line to show current mode
+set showtabline&vim    "tells when the tab pages line is displayed
+set showtabpanel&vim    "when to display the tab panel
+set sidescroll&vim    "minimum number of columns to scroll horizontal
+set sidescrolloff&vim    "min. nr. of columns to left and right of cursor
+set signcolumn&vim    "when to display the sign column
+set smartcase&vim    "no ignore case when pattern has uppercase
+set smartindent&vim    "smart autoindenting for C programs
+set smarttab&vim    "<Tab> in leading whitespace indents by 'shiftwidth'
+set smoothscroll&vim    "scroll by screen lines when 'wrap' is set
+set softtabstop&vim    "number of columns between two soft tab stops
+set spell&vim    "enable spell checking
+set spellcapcheck&vim    "pattern to locate end of a sentence
+set spellfile&vim    "files where |zg| and |zw| store words
+set spelllang&vim    "language(s) to do spell checking for
+set spelloptions&vim    "options for spell checking
+set spellsuggest&vim    "method(s) used to suggest spelling corrections
+set splitbelow&vim    "new window from split is below the current one
+set splitkeep&vim    "determines scroll behavior for split windows
+set splitright&vim    "new window is put right of the current one
+set startofline&vim    "commands move cursor to first non-blank in line
+set statusline&vim    "custom format for the status line
+set statuslineopt&vim    "additional options for the |status-line|
+set suffixes&vim    "suffixes that are ignored with multiple match
+set suffixesadd&vim    "suffixes added when searching for a file
+set swapfile&vim    "whether to use a swapfile for a buffer
+set swapsync&vim    "how to sync the swap file
+set switchbuf&vim    "sets behavior when switching to another buffer
+set synmaxcol&vim    "maximum column to find syntax items
+set syntax&vim    "syntax to be loaded for current buffer
+" T
+set tabclose&vim    "which tab page to focus when closing a tab
+set tabline&vim    "custom format for the console tab pages line
+set tabpagemax&vim    "maximum number of tab pages for |-p| and "tab all"
+set tabpanel&vim    "content displayed in the tab panel
+set tabpanelopt&vim    "optional settings for the tab panel
+set tabstop&vim    "number of columns between two tab stops
+set tagbsearch&vim    "use binary searching in tags files
+set tagcase&vim    "how to handle case when searching in tags files
+set tagfunc&vim    "function to get list of tag matches
+set taglength&vim    "number of significant characters for a tag
+set tagrelative&vim    "file names in tag file are relative
+set tags&vim    "list of file names used by the tag command
+set tagsecure&vim    "do not open remote files using tag commands
+set tagstack&vim    "push tags onto the tag stack
+set tcldll&vim    "name of the Tcl dynamic library
+" set term&vim    name of the terminal (left to Vim or the terminal at startup)
+set termbidi&vim    "terminal takes care of bi-directionality
+set termencoding&vim    "character encoding used by the terminal
+set termguicolors&vim    "use GUI colors for the terminal
+set termresize&vim    "method used to detect terminal resize events
+set termsync&vim    "enable terminal sync mode for redraw
+set termwinkey&vim    "key that precedes a Vim command in a terminal
+set termwinscroll&vim    "max number of scrollback lines in a terminal window
+set termwinsize&vim    "size of a terminal window
+set termwintype&vim    "MS-Windows: type of pty to use for terminal window
+set terse&vim    "shorten some messages
+set textauto&vim    "obsolete, use 'fileformats'
+set textmode&vim    "obsolete, use 'fileformat'
+set textwidth&vim    "maximum width of text that is being inserted
+set thesaurus&vim    "list of thesaurus files for keyword completion
+set thesaurusfunc&vim    "function to be used for thesaurus completion
+set tildeop&vim    "tilde command "~" behaves like an operator
+set timeout&vim    "time out on mappings and key codes
+set ttimeout&vim    "time out on mappings
+set timeoutlen&vim    "time out time in milliseconds
+set ttimeoutlen&vim    "time out time for key codes in milliseconds
+set title&vim    "let Vim set the title of the window
+set titlelen&vim    "percentage of 'columns' used for window title
+set titleold&vim    "old title, restored when exiting
+set titlestring&vim    "string to use for the Vim window title
+set toolbar&vim    "GUI: which items to show in the toolbar
+set toolbariconsize&vim    "size of the toolbar icons (for GTK 2 only)
+set ttybuiltin&vim    "use built-in termcap before external termcap
+set ttyfast&vim    "indicates a fast terminal connection
+" set ttymouse&vim    type of mouse codes generated (left to Vim or the terminal at startup)
+set ttyscroll&vim    "maximum number of lines for a scroll
+" set ttytype&vim    alias for 'term' (left to Vim or the terminal at startup)
+" U
+set undodir&vim    "where to store undo files
+set undofile&vim    "save undo information in a file
+set undolevels&vim    "maximum number of changes that can be undone
+set undoreload&vim    "max nr of lines to save for undo on a buffer reload
+set updatecount&vim    "after this many characters flush swap file
+set updatetime&vim    "after this many milliseconds flush swap file
+" V
+set varsofttabstop&vim    "a list of number of columns between soft tab stops
+set vartabstop&vim    "a list of number of columns between tab stops
+set verbose&vim    "give informative messages
+set verbosefile&vim    "file to write messages in
+set viewdir&vim    "directory where to store files with :mkview
+set viewoptions&vim    "specifies what to save for :mkview
+set viminfo&vim    "use .viminfo file upon startup and exiting
+set viminfofile&vim    "file name used for the viminfo file
+set virtualedit&vim    "when to use virtual editing
+set visualbell&vim    "use visual bell instead of beeping
+" W
+set warn&vim    "warn for shell command when buffer was changed
+set weirdinvert&vim    "for terminals that have weird inversion method
+set whichwrap&vim    "allow specified keys to cross line boundaries
+set wildchar&vim    "command-line character for wildcard expansion
+set wildcharm&vim    "like 'wildchar' but also works when mapped
+set wildignore&vim    "files matching these patterns are not completed
+set wildignorecase&vim    "ignore case when completing file names
+set wildmenu&vim    "use menu for command line completion
+set wildmode&vim    "mode for 'wildchar' command-line expansion
+set wildoptions&vim    "specifies how command line completion is done
+set winaltkeys&vim    "when the windows system handles ALT keys
+set wincolor&vim    "window-local highlighting
+set window&vim    "nr of lines to scroll for CTRL-F and CTRL-B
+set winfixbuf&vim    "keep window focused on a single buffer
+set winfixheight&vim    "keep window height when opening/closing windows
+set winfixwidth&vim    "keep window width when opening/closing windows
+set winheight&vim    "minimum number of lines for the current window
+set winhighlight&vim    "window-local highlighting mappings
+set winminheight&vim    "minimum number of lines for any window
+set winminwidth&vim    "minimal number of columns for any window
+set winptydll&vim    "name of the winpty dynamic library
+set winwidth&vim    "minimal number of columns for current window
+set wlseat&vim    "the Wayland seat to use
+set wlsteal&vim    "allow focus stealing functionality for Wayland
+set wltimeoutlen&vim    "timeout to use when polling in Wayland
+set wrap&vim    "long lines wrap and continue on the next line
+set wrapmargin&vim    "chars from the right where wrapping starts
+set wrapscan&vim    "searches wrap around the end of the file
+set write&vim    "writing to a file is allowed
+set writeany&vim    "write to file with no need for "!" override
+set writebackup&vim    "make a backup before overwriting a file
+set writedelay&vim    "delay this many msec for each char (for debug)
+" X
+set xtermcodes&vim    "request terminal codes from an xterm
+
+" The following options are intentionally not forced to fixed values:
+" columns, lines, term, ttymouse and ttytype are determined by the terminal.
+" encoding follows Vim startup/locale; cryptmethod and key relate to encryption.
+
+" ##############################################################################
+" PERSONAL SETTINGS
+" These are the settings from the existing vimrc and vimrc_misc.vim.
+" ##############################################################################
+
+" Plugin configuration
+source ~/.vim/vimrc_pluggins.vim
+
+" colorscheme / theme
+set t_Co=256    " deprecated terminal colour-count setting retained from vimrc
+set background=dark
+colorscheme habamax
+
+" Custom Statusline
+set laststatus=2
+
+" dictionary to convert mode() output to something more readable
+let g:modedisplay={
+    \\ 'n'  : 'Normal',
+    \\ 'no' : 'Normal·Operator Pending',
+    \\ 'v'  : 'Visual',
+    \\ 'V'  : 'V·Line',
+    \\ '^V' : 'V·Block',
+    \\ 's'  : 'Select',
+    \\ 'S'  : 'S·Line',
+    \\ '^S' : 'S·Block',
+    \\ 'i'  : 'Insert',
+    \\ 'R'  : 'Replace',
+    \\ 'Rv' : 'V·Replace',
+    \\ 'c'  : 'Command',
+    \\ 'cv' : 'Vim Ex',
+    \\ 'ce' : 'Ex',
+    \\ 'r'  : 'Prompt',
+    \\ 'rm' : 'More',
+    \\ 'r?' : 'Confirm',
+    \\ '!'  : 'Shell',
+    \\ 't'  : 'Terminal'
+    \\}
+
+set statusline+=%F    " add full filepath of opened file to statusline
+set statusline+=\\ \\-\\ filetype:%Y    " add filetype
+set statusline+=%=    " add a left-right split point
+"set statusline+=\\ mode:%{toupper(g:modedisplay[mode()])}    " add current mode
+"set statusline+=\\ %p%%    " add percentage through file in lines
+set statusline+=\\line\\ %l\\    " add line number
+set statusline+=\\:\\ col\\ %v    " add column number
+
+" custom fold line
+function! MyFoldText()
+    " Number of dashes based on fold level
+    let nestedlevel = repeat('-', v:foldlevel)
+    " calculate how many lines in the fold
+    let numoflines = v:foldend - v:foldstart + 1
+    " get the text line on the first line of the fold
+    let comment = getline(v:foldstart)
+    " make this amount of dashes to add to the fold text line
+    let dashes = repeat('-', (70-len(nestedlevel)-len(numoflines)-len(comment)))
+
+    return '+'.nestedlevel.' '.numoflines.' lines:'.comment.' '.dashes
+endfunction
+
+set foldtext=MyFoldText()
+set fillchars=fold:\\ 
+
+" Misc settings
+filetype plugin on
+set history=1000
+set viminfo='1000
+set viminfo+=<1000
+set viminfo+=s1000000
+set viewoptions=folds
+set shortmess=aoOtTI
+set nofixendofline
+set wrapscan
+set listchars=space:·,trail:•,nbsp:*,extends:>,precedes:<,tab:\\\\│\\\\>
+set list
+set foldmethod=manual
+set foldmarker={{{,}}}
+set foldcolumn=2
+set autoindent
+set breakindent
+set autowrite
+set showcmd
+set number
+set cursorline
+set cursorlineopt=number
+set norelativenumber
+set showmode
+set t_vb=
+set smarttab
+set tabstop=4
+set softtabstop=4
+"set expandtab
+set shiftwidth=4
+set smartindent
+set textwidth=130
+set colorcolumn=130
+set timeout
+set timeoutlen=2000
+set spellcapcheck=
+set ignorecase
+set smartcase
+set nobackup
+set directory^=$HOME/.vim/swapfiles//
+set nowritebackup
+set icon
+set scrolloff=8
+set hlsearch
+set linebreak
+set showbreak=>>\\ 
+set ttyfast
+set wildmenu
+syntax enable
+
+" key maps
+let mapleader=\",\"
+nnoremap <LEADER>n :NERDTreeToggle<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap Y y$
+nnoremap H b
+nnoremap L w
+map <F1> :set number!<CR>
+map <F2> :set relativenumber!<CR>
+map <F3> :set list!<CR>
+nnoremap <leader>o o<esc>k
+nnoremap \\\\ :nohlsearch<return>
+
+" AUTOCMDs
+autocmd FileType c,cpp nnoremap <Leader>{ i{<CR>}<Esc>O
+
+augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave * mkview
+    autocmd BufWinEnter * silent! loadview
+augroup end
+
+" ##############################################################################
+" end of vimrc
+" ##############################################################################
